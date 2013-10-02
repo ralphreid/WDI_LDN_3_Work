@@ -26,13 +26,17 @@ def  operation_type(first_number, second_number, operation)
   end
 end
 
-puts "Hello, which operation do you want to do?"
-puts "(a)dd, (s)ubtract, (m)ultiply, (d)ivide"
-operation = gets.chomp.strip.downcase
-puts "First Number"
-first_number = gets.chomp.to_i
-puts "Second Number"
-second_number = gets.chomp.to_i
-puts "\n\n\nThanks!"
-puts "\n\n#{ first_number } #{ operation_type(first_number,second_number,operation) } #{ second_number }\n"
+def calculator
+  puts "Hello, which operation do you want to do?"
+  puts "(a)dd, (s)ubtract, (m)ultiply, (d)ivide"
+  operation = gets.chomp.strip.downcase
+  puts "First Number"
+  first_number = gets.chomp.to_i
+  puts "Second Number"
+  second_number = gets.chomp.to_i
+  puts "\n\n\nThanks!"
+  puts "\n\n#{ first_number } #{ operation_type(first_number,second_number,operation) } #{ second_number }\n"
 puts "equals #{ calculation(first_number, second_number, operation) }\n\n"
+end
+
+calculator
