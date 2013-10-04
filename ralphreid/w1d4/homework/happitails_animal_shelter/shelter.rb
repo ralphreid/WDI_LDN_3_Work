@@ -1,3 +1,6 @@
+
+
+
 class Shelter
 
   attr_accessor :name, :address, :animals, :clients

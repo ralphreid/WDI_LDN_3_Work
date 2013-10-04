@@ -3,8 +3,7 @@ require_relative 'client'
 require_relative 'animal'
 
 $shelter = Shelter.new( "Happitails", "Main Street")
-$client = Client.new("Bob", 22, "male", 2)
-$animal = Animal.new("Fido", 9, "male", "Boxer")
+
 
 
 
