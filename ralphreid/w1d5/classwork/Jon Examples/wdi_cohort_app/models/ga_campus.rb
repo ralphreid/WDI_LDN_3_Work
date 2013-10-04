@@ -13,7 +13,7 @@ class GaCampus
     @cohorts = []
   end
  
-  def <=> (other)
+  def <=> (other)     #this is needed to properly use the Comparable module from Ruby
     self.city <=> other.city
   end
   
