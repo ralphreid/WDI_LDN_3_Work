@@ -2,7 +2,7 @@ class Brokerage
   #clients should be a hash not an array
   attr_accessor :name, :clients
 
-  def add_client
+  def create_client
 
   end
   

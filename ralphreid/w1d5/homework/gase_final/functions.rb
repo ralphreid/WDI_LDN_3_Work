@@ -1,13 +1,28 @@
 # this file contains all the functions that will be called from main.#!/usr/bin/env ruby
 # there should be seven options in the menu when launched
 
-
-def create_client
-
+def menu #WORK - break into client and broker interfaces
+  puts `clear`
+  puts "=== General Assembley Brokerage === \n\n\n"
+  puts "\t== For Brokers ==\n"
+  puts '1 : Create Clients'
+  puts '2 : List Clients'
+  puts '3 : Find a Client (by name)'
+  puts '4 : List Client Portfolios'
+  puts "\n\n\t== For Clients ==\n"
+  puts '5 : Create Portfolio'
+  puts '6 : Buy Stock'
+  puts '7 : Sell Stock'
+  puts '8 : List Stocks in a Portfolio'
+  puts '9 : List Stocks All Portfolios'
+  puts "Q : Quit\n\n"
+  print '--> '.color('#ff3300')
+  gets.chomp
 end
 
-def create_portfolio
 
-end
+
+
+
 
 # atleast seven more like this

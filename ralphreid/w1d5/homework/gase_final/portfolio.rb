@@ -12,4 +12,8 @@ class Portfolio
 
   end
 
+  def create_portfolio
+
+  end
+
 end
