@@ -1,7 +1,6 @@
-# require local classes
 require_relative'brokerage'
 require_relative'client'
-# require_relative'porfolio'
+require_relative'portfolio'
 # require_relative'stock'
 
 # Instantiate a Brokerage
@@ -18,4 +17,20 @@ $brokerage.clients['delly'] = Client.new("delly")
 $brokerage.clients['piero'] = Client.new("piero")
 $brokerage.clients['garnet'] = Client.new("garnet")
 
-# Instantiate portfolios.  Insert them into the TBC
+# Instantiate portfolios.
+$brokerage.clients['bob'].portfolios['HIGH'] = Portfolio.new('HIGH')
+$brokerage.clients['bob'].portfolios['Aggressive'] = Portfolio.new('Aggressive')
+$brokerage.clients['bob'].portfolios['Risky'] = Portfolio.new('Risky')
+$brokerage.clients['alpha'].portfolios['HIGH'] = Portfolio.new('HIGH')
+$brokerage.clients['alpha'].portfolios['Aggressive'] = Portfolio.new('Aggressive')
+$brokerage.clients['alpha'].portfolios['Risky'] = Portfolio.new('Risky')
+$brokerage.clients['jimmy'].portfolios['HIGH'] = Portfolio.new('HIGH')
+$brokerage.clients['delly'].portfolios['Aggressive'] = Portfolio.new('Aggressive')
+$brokerage.clients['sean'].portfolios['Risky'] = Portfolio.new('Risky')
+$brokerage.clients['garnet'].portfolios['HIGH'] = Portfolio.new('HIGH')
+$brokerage.clients['piero'].portfolios['Aggressive'] = Portfolio.new('Aggressive')
+$brokerage.clients['garnet'].portfolios['Risky'] = Portfolio.new('Risky')
+$brokerage.clients['delly'].portfolios['HIGH'] = Portfolio.new('HIGH')
+$brokerage.clients['jimmy'].portfolios['Aggressive'] = Portfolio.new('Aggressive')
+$brokerage.clients['jimmy'].portfolios['Risky'] = Portfolio.new('Risky')
+# Instantiate stock portfolios.

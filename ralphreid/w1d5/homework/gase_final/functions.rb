@@ -23,9 +23,15 @@ def menu
 end
 
 def create_client
-  print "Name: "
+  print "Name:\t"
   name = gets.chomp
   $brokerage.clients[name] = Client.new(name)
 end
 
-# atleast seven more like this
+def create_client_portfolio
+  print "Existing Client Name:\t"
+  name = gets.chomp
+  print "Name of the New Portfolio:\t"
+  portfolio_name = gets.chomp
+  $brokerage.clients[name].portfolios[portfolio_name] = Portfolio.new(portfolio_name)
+end

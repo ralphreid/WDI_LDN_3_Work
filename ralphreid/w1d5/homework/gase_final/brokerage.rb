@@ -11,8 +11,8 @@ class Brokerage
   end
 
   def find_client
-    print 'Client name:'
+    print "Client name:\t"
     name = gets.chomp
-    puts "Client:\t#{@clients[name].name}\t\tPortfolios:\tAAAAAAAA" 
+    puts "Client:\t#{@clients[name].name} is a client" 
   end  
 end 
