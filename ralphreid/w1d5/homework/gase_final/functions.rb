@@ -22,16 +22,10 @@ def menu
   gets.chomp
 end
 
-# def tester
-#   40.times { puts 'ALL GOOD'}
-# end
-
 def create_client
   print "Name: "
   name = gets.chomp
   $brokerage.clients[name] = Client.new(name)
 end
-
-
 
 # atleast seven more like this

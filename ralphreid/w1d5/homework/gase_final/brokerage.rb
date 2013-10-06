@@ -6,6 +6,11 @@ class Brokerage
     @clients = {}
   end
   
+  def list_clients
+    puts @clients.keys
+    # binding.pry
+  end
+
   def client(name)
     #find a client with the name
   end  
