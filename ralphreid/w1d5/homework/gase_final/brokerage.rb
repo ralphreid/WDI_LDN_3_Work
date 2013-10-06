@@ -1,12 +1,12 @@
 class Brokerage
-  #clients should be a hash not an array
   attr_accessor :name, :clients
 
-  def create_client
-
+  def initialize name
+    @name = name
+    @clients = {}
   end
   
   def client(name)
     #find a client with the name
   end  
-end
+end 
