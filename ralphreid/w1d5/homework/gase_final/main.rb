@@ -15,9 +15,8 @@ response = menu
 while response != 'q'
   case response  
   when '1' then create_client
-  when '2' then puts $brokerage.list_clients; gets
-  # binding.pry
-  when '3' then puts 'THIS IS A PLACE HOLDER for future Dev 3 : Find a Client (by name)'
+  when '2' then $brokerage.list_clients; gets
+  when '3' then $brokerage.find_client; gets
   when '4' then puts 'THIS IS A PLACE HOLDER for future Dev 4 : List Client Portfolios'
   when '5' then puts 'THIS IS A PLACE HOLDER for future Dev 5 : Create Portfolio'
   when '6' then puts 'THIS IS A PLACE HOLDER for future Dev 6 : Buy Stock'

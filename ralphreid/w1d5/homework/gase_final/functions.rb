@@ -6,12 +6,12 @@ def menu
 # Batch create clients
   puts `clear`
   puts "=== General Assembley Brokerage === \n\n\n"
-  puts "\t== For Brokers ==\n"
+  puts "\t== - ==\n"
   puts '1 : Create Client'
   puts '2 : List Clients'
   puts '3 : Find a Client (by name)'
   puts '4 : List Client Portfolios'
-  puts "\n\n\t== For Clients ==\n"
+  puts "\n\n\t== - ==\n"
   puts '5 : Create Portfolio'
   puts '6 : Buy Stock'
   puts '7 : Sell Stock'

@@ -8,10 +8,11 @@ class Brokerage
   
   def list_clients
     puts @clients.keys
-    # binding.pry
   end
 
-  def client(name)
-    #find a client with the name
+  def find_client
+    print 'Client name:'
+    name = gets.chomp
+    puts "Client:\t#{@clients[name].name}\t\tPortfolios:\tAAAAAAAA" 
   end  
 end 
