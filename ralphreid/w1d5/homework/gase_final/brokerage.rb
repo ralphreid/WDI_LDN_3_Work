@@ -14,5 +14,14 @@ class Brokerage
     print "Client name:\t"
     name = gets.chomp
     puts "Client:\t#{@clients[name].name} is a client" 
-  end  
+  end
+
+  def list_clients_portfolios  # ?? Could this be refactored
+    x = $brokerage.clients.keys
+    x.each do |key|
+      puts key.upcase
+      puts "\t#{$brokerage.clients[key].portfolios.keys}"
+    end
+  end
+
 end 

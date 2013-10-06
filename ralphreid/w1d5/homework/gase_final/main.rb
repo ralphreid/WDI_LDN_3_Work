@@ -17,8 +17,7 @@ while response != 'q'
   when '1' then create_client
   when '2' then $brokerage.list_clients; gets
   when '3' then $brokerage.find_client; gets
-  when '4' then puts 'THIS IS A PLACE HOLDER for future Dev 4 : List Client Portfolios'
-  binding.pry
+  when '4' then $brokerage.list_clients_portfolios; gets
   when '5' then puts create_client_portfolio
   when '6' then puts 'THIS IS A PLACE HOLDER for future Dev 6 : Buy Stock'
   when '7' then puts 'THIS IS A PLACE HOLDER for future Dev 7 : Sell Stock'
