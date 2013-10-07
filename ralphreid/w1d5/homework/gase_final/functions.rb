@@ -13,10 +13,10 @@ def menu
   puts '4 : List Client Portfolios'
   puts "\n\n\t== - ==\n"
   puts '5 : Create Portfolio'
-  puts '6 : Buy Stock'
-  puts '7 : Sell Stock'
-  puts '8 : List Stocks in a Portfolio'
-  puts '9 : List Stocks All Portfolios'
+  puts '6 : Buy Stock  = --- Testing Required'
+  puts '7 : Sell Stock   = --- Under Construction & Testing Required'
+  puts '8 : List Stocks in a Portfolio --- Under Construction'
+  puts '9 : List Stocks All Portfolios --- Under Construction'
   puts "Q : Quit\n\n"
   print '--> '.color('#ff3300')
   gets.chomp
@@ -49,9 +49,21 @@ def buy
     
     $brokerage.clients[client].portfolios[portfolio_name].stocks[stock_symbol] = Stock.new(stock_symbol, num_shares)
     $brokerage.clients[client].portfolios[portfolio_name].stocks[stock_symbol].buy_price = price
+  end
 
-   # $brokerage.clients['bob'].portfolios['Aggressive'].stocks['AAPL'] = Stock.new('AAPL', 10)
-    # portfolio_name = gets.chomp
-    # $brokerage.portfolio_name[portfolio_name] = Portfolio.new(portfolio_name)
+  def sell
+    print "Client Name:\t"
+    client = gets.chomp
+    print "Portfolio Name:\t"
+    portfolio_name = gets.chomp
+    print "Ticker Symbol\t"
+    stock_symbol = gets.chomp
+    print "Number of Shares to Sell:\t"
+    num_shares = gets.chomp
+   
+     #$brokerage.clients[client].portfolios[portfolio_name].stocks[stock_symbol].sell_price = YahooFinance::get_standard_quotes(stock_symbol)[stock_symbol].lastTrade
+   
+    s = $brokerage.clients[client].portfolios[portfolio_name].stocks[stock_symbol]
+    s.shares -= num_shares
   end
 

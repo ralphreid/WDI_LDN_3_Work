@@ -20,7 +20,7 @@ while response != 'q'
   when '4' then $brokerage.list_clients_portfolios; gets
   when '5' then puts create_client_portfolio
   when '6' then buy
-  when '7' then puts 'THIS IS A PLACE HOLDER for future Dev 7 : Sell Stock'
+  when '7' then sell
   when '8' then puts 'THIS IS A PLACE HOLDER for future Dev 8 : List Stocks in a Portfolio'
   when '9' then puts 'THIS IS A PLACE HOLDER for future Dev 9 : List Stocks All Portfolios'
   end
