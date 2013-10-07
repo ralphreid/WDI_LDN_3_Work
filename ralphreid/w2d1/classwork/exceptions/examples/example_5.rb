@@ -8,7 +8,7 @@ f = File.open filename
 puts "opened file handle for #{filename}"
 begin
   puts "doing some (potentially buggy) processing on #{filename}"
-  f.readlines.count / 0
+  f.readlines.count / 0 # this is just stupid.....our mistake
 rescue => e
   puts "whoopsie: #{e}".color(:red)
 else
