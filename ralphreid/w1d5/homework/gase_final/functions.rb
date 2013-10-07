@@ -35,3 +35,23 @@ def create_client_portfolio
   portfolio_name = gets.chomp
   $brokerage.clients[name].portfolios[portfolio_name] = Portfolio.new(portfolio_name)
 end
+
+def buy
+    print "Client Name:\t"
+    client = gets.chomp
+    print "Portfolio Name:\t"
+    portfolio_name = gets.chomp
+    print "Ticker Symbol\t"
+    stock_symbol = gets.chomp
+    print "Number of Shares to Buy:\t"
+    num_shares = gets.chomp
+    price = YahooFinance::get_standard_quotes(stock_symbol)[stock_symbol].lastTrade
+    
+    $brokerage.clients[client].portfolios[portfolio_name].stocks[stock_symbol] = Stock.new(stock_symbol, num_shares)
+    $brokerage.clients[client].portfolios[portfolio_name].stocks[stock_symbol].buy_price = price
+
+   # $brokerage.clients['bob'].portfolios['Aggressive'].stocks['AAPL'] = Stock.new('AAPL', 10)
+    # portfolio_name = gets.chomp
+    # $brokerage.portfolio_name[portfolio_name] = Portfolio.new(portfolio_name)
+  end
+

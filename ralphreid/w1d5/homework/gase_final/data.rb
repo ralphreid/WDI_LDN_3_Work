@@ -1,7 +1,7 @@
 require_relative'brokerage'
 require_relative'client'
 require_relative'portfolio'
-# require_relative'stock'
+require_relative'stock'
 
 # Instantiate a Brokerage
 $brokerage = Brokerage.new("Goldman Assembly")
@@ -33,4 +33,8 @@ $brokerage.clients['garnet'].portfolios['Risky'] = Portfolio.new('Risky')
 $brokerage.clients['delly'].portfolios['HIGH'] = Portfolio.new('HIGH')
 $brokerage.clients['jimmy'].portfolios['Aggressive'] = Portfolio.new('Aggressive')
 $brokerage.clients['jimmy'].portfolios['Risky'] = Portfolio.new('Risky')
+
 # Instantiate stock portfolios.
+$brokerage.clients['bob'].portfolios['Aggressive'].stocks['AAPL'] = Stock.new('AAPL', 10)
+$brokerage.clients['bob'].portfolios['Aggressive'].stocks['YHOO'] = Stock.new('YHOO', 50)
+$brokerage.clients['bob'].portfolios['Aggressive'].stocks['MSFT'] = Stock.new('MSFT', 10)

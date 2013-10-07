@@ -6,16 +6,17 @@ class Portfolio
     @stocks = {}
   end
 
-  # def buy_stock
-  # end
+  def buy_stock
+
+  end
 
   # def sell_stock
 
   # end
 
-  # def position
-
-  # end
+  def position
+    
+  end
 
   def create_portfolio
     print "Portfolio Name:\t"
