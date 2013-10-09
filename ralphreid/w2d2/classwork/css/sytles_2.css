@@ -1,0 +1,36 @@
+div {
+  color: white;
+  padding: 10px;
+  background-color: blue;
+}
+
+#div_2 {
+  background-color: black;
+  position: relative;
+  top: 20px;
+  left: 40px;
+
+  position: absolute;
+}
+
+#div_2a {
+  background-color: red;
+ /* top: 0px;
+  left: 0px;
+  position: absolute;*/
+
+  float: left;
+  width: 200px;
+}
+
+#div_2b {
+  background-color: green;
+
+  float: right;
+  width: 200px;
+}
+
+#div_3 {
+  clear: both;
+}
+

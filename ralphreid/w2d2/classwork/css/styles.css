@@ -1,0 +1,65 @@
+p {
+  color: orange
+}
+
+div {
+  /*border: 1px solid black;*/
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+
+  background-color: blue;
+  color: white;
+}
+
+div#div_1 {
+  background-color: green;
+  width: 100px;
+  height: 50px;
+  font-size: 12px;
+}
+
+#div_2 {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  margin-left: 10px;
+
+  border-width: 5px;
+
+  padding: 20px;
+}
+
+/*div#div_2, div#div_3 {
+  background-color: red;
+}*/
+
+.text-right {
+  text-align: right;
+}
+
+div.bg_red {
+  background-color: red;
+}
+
+.comic-sans {
+  font-family: "Comic Sans MS";
+  font-size: 50px;
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.gone {
+  display: none;
+}
+
+#div_0 p {
+  text-align: right;
+}
