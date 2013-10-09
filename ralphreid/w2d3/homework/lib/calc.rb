@@ -1,20 +1,6 @@
-def trip_calculator
-  
-  #user inputs required
-  
-  distance = gets.chomp.to_f
-  miles_per_gallon  = gets.chomp.to_f
-  price_per_gallon  = gets.chomp.to_f
-  speed  = gets.chomp.to_f
-
-  #calculations
-
-  cost = distance / ( mpg - 2 * ( speed - 60 ) )
-  
-  #output values
-
+def trip_calculator(distance, miles_per_gallon, speed)
+  cost = distance / ( miles_per_gallon - 2 * ( speed - 60 ) )
   cost = cost.round(2)
-  duration = distance / speed
 end
 
 

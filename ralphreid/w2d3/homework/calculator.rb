@@ -43,7 +43,15 @@ get '/mortage/' do
 end
 
 get '/trip/' do
-  
-    
+  erb :trip
+end
+
+post '/trip/' do
+  distance = params[:distance].to_f
+  miles_per_gallon = params[:miles_per_gallon].to_f
+  price_per_gallon = params[:price_per_gallon].to_f
+  speed = params[:speed].to_f
+  @duration = distance / speed
+  @cost = trip_calculator(distance, miles_per_gallon, speed)
   erb :trip
 end

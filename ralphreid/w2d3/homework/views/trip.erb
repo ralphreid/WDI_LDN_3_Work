@@ -1,1 +1,13 @@
 <h2>Trip Calculator</h2>
+<form method="POST" action="/trip/">
+  <ul>
+      <li>Distance: <input type="text" name="distance"></li>
+      <li> Miles per Gallon: <input type="text" name="miles_per_gallon"></li>
+      <li> Price per Gallon: <input type="text" name="price_per_gallon"></li>
+      <li> Speed: <input type="text" name="speed"></li>
+      <input type="submit">
+  </ul>
+</form>
+
+
+the result is a cost of <%= @cost %> and duration of <%= @duration %>
