@@ -36,9 +36,16 @@ post '/bmi/' do
   erb :bmi
 end
 
-get '/mortage/' do
- 
-    
+get '/mortage/' do 
+  erb :mortage
+end
+
+post '/mortage/' do 
+  interest_rate = params[:interest_rate].to_f
+  principal = params[:principal].to_f
+  number_of_years = params[:number_of_years].to_f
+  @result = ( mortage_monthly_payment_calculator(interest_rate, principal, number_of_years) ).round(2)
+
   erb :mortage
 end
 

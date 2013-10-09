@@ -1,1 +1,12 @@
 <h2>Mortage Calculator</h2>
+<form method="POST" action="/mortage/">
+  <ul>
+      <li>Annual interest rate: <input type="text" name="interest_rate"></li>
+      <li> Principal: <input type="text" name="principal"></li>
+      <li> Number of years: <input type="text" name="number_of_years"></li>
+      <input type="submit">
+  </ul>
+</form>
+
+
+the result is a payment of <%= @result %>

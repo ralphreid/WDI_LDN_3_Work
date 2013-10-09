@@ -17,18 +17,9 @@ def bmi_calculator(bmi_type, mass, height)
 end
 
 
-def mortage_monthly_payment_calculator
-  
-  # User Inputs
-  interest_rate  = gets.chomp.to_f # annual interest rate
-  principal = gets.chomp.to_f # principal remaining on the loan
-  number_of_years = gets.chomp.to_f # years left
-  
-  # Calculations
+def mortage_monthly_payment_calculator(interest_rate, principal, number_of_years)
   interest_mon = ( interest_rate / 100 ) / 12
   number_of_payments = number_of_years * 12
-
-  # Output
   payment =  principal * ( ( interest_mon * (1 + interest_mon)**number_of_payments ) / ( ( 1 + interest_mon )**number_of_payments - 1) )  #monthly payment
 end
 
