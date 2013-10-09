@@ -9,8 +9,6 @@ enable :sessions
 
 
 get '/' do
-  # session['answers'] = {} # initialize the session storage
-    
   erb :welcome
 end
 
@@ -26,9 +24,15 @@ post '/classic/' do
   erb :classic
 end
 
-get '/bmi/' do
-  
-    
+get '/bmi/' do 
+  erb :bmi
+end
+
+post '/bmi/' do 
+  bmi_type = params[:bmi_type]
+  mass = params[:mass].to_f
+  height = params[:height].to_f
+  @result = bmi_calculator(bmi_type, mass, height)
   erb :bmi
 end
 

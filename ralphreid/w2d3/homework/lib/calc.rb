@@ -18,24 +18,15 @@ def trip_calculator
 end
 
 
-def bmi_calculator
-
-  #user inputs required
-
-  bmi_type = gets.chomp.downcase # (m)etric or (i)mperial
-  mass = 
-  height = 
-  bmi_type = 
+def bmi_calculator(bmi_type, mass, height)
 
   #calculations
-
   case bmi_type 
-  when true then unit_factor = 1  #TRUE means METRIC
-  when false then unit_factor = 703  #TRUE means Imperial
+    when 'y' then unit_factor = 1  #TRUE means METRIC
+    when 'n' then unit_factor = 703  #TRUE means Imperial
   end  
 
   # outputs
-
   bmi_value = ( mass / height**2 ) * unit_factor
 end
 

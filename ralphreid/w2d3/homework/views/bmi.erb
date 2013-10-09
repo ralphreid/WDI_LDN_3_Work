@@ -1,1 +1,12 @@
 <h2>BMI Calculator</h2>
+<form method="POST" action="/bmi/">
+  <ul>
+      <li> Metric (y) or Imperial (n)<input type="text" name="bmi_type"></li>
+      <li> Mass: <input type="text" name="mass"></li>
+      <li> Height: <input type="text" name="height"></li>
+      <input type="submit">
+  </ul>
+</form>
+
+
+the result is <%= @result %>
