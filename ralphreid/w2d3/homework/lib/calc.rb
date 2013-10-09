@@ -55,12 +55,12 @@ def mortage_monthly_payment_calculator
   payment =  principal * ( ( interest_mon * (1 + interest_mon)**number_of_payments ) / ( ( 1 + interest_mon )**number_of_payments - 1) )  #monthly payment
 end
 
-def  classic
-  first_number = 
-  second_number = 
-  result = case operator
+
+def  classic(first_number, second_number, operator)
+  case operator
     when "+" then first_number + second_number
     when "-" then first_number - second_number
     when "x" then first_number * second_number
     when "/" then first_number / second_number
+  end
 end
