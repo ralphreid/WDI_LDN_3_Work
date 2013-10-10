@@ -5,9 +5,17 @@ require 'sinatra/contrib/all'
 enable :sessions
 
 set :questions, {
-  1 => ["Ruby is an 'interpreted' language?", true],
-  2 => ["Everything in ruby is an object?", true],
-  3 => ["The code <pre><code>2+2</code></pre> gives the result <pre><code>5</code></pre>", false]
+  1 => ["Ruby can use short easy to read syntax a.should > 7?", true),
+  2 => ["Ruby can use use standardised libraries", true],
+  3 => ["You can call blocks from within method using yield", true]
+  4 => ["A two-dot range form creates a inclusive range", true]
+  5 => ["Ranges can be conditions", true]
+  6 => ["Enumerators in Ruby can generate infinite sequences", true]
+  7 => ["A ruby itierator", true]
+  8 => ["Ruby access control allows developers to choose how much of their classes are exposed", true]
+  9 => ["File.new allows you to create a new file object", true]
+  10 => ["Ruby is magic", true]
+
 }
 
 set :num_questions, settings.questions.length
