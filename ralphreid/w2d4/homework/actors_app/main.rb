@@ -70,33 +70,31 @@ post "/actors/:actor_id/delete" do
   redirect "/"
 end
 
-# get "/movies/:movie_id/update" do
-#   db = PG.connect(dbname: 'movies', host: 'localhost')
-#   begin
-#     movie_id = params[:movie_id]
-#     sql = "SELECT * FROM movies WHERE id=#{movie_id}"
-#     @movie = db.exec(sql).first # ngets the first item returned
-#   ensure  
-#     db.close
-#   end
-#   erb :new
-# end
+get "/actors/:actor_id/update" do
+  db = PG.connect(dbname: 'movies', host: 'localhost')
+  begin
+    actor_id = params[:actor_id]
+    sql = "SELECT * FROM actors WHERE id=#{actor_id}"
+    @actor = db.exec(sql).first # gets the first item returned
+  ensure  
+    db.close
+  end
+  erb :new
+end
 
-# post "/movies/:movie_id/update" do
-#   db = PG.connect(dbname: 'movies', host: 'localhost')
-#   begin
-#     movie_id = params[:movie_id].to_i
-#     sql = "UPDATE movies SET
-#         title = '#{params[:title]}',
-#         year = '#{params[:year]}',
-#         rated = '#{params[:rated]}',
-#         poster = '#{params[:poster]}',
-#         director = '#{params[:director]}',
-#         actors = '#{params[:actors]}'
-#         WHERE id = #{movie_id}"
-#     db.exec(sql)
-#   ensure  
-#     db.close
-#   end
-#   redirect "/movies/#{movie_id}"
-# end
+post "/actors/:actor_id/update" do
+  db = PG.connect(dbname: 'movies', host: 'localhost')
+  begin
+    actor_id = params[:actor_id].to_i
+    sql = "UPDATE actors SET
+        first_name = '#{params[:first_name]}',
+        last_name = '#{params[:last_name]}',
+        dob = '#{params[:dob]}',
+        image_url = '#{params[:image_url]}'
+        WHERE id = #{actor_id}"
+    db.exec(sql)
+  ensure  
+    db.close
+  end
+  redirect "/actors/#{actor_id}"
+end
