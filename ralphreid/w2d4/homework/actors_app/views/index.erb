@@ -1,10 +1,10 @@
-<h3>Movies Index</h3>
+<h3>Actors Index</h3>
 <ul>
-<% @movies.each do |movie| %>
+<% @actors.each do |actor| %>
   <li>
     <h4>
-      <a href="/movies/<%= movie["id"] %>">
-        <%= "#{movie["title"]} (#{movie["year"]})"%>
+      <a href="/actors/<%= actor["id"] %>">
+        <%= "#{actor["first_name"]} (#{actor["last_name"]})"%>
       </a>
     </h4>
   </li>
