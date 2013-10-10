@@ -58,17 +58,17 @@ post "/search" do
     erb :index  #use the same index so we can reuse the .each already being used
 end
 
-# post "/movies/:movie_id/delete" do
-#   db = PG.connect(dbname: 'movies', host: 'localhost')
-#   begin
-#     movie_id = params[:movie_id]
-#     sql = "DELETE FROM movies WHERE id = #{movie_id}" # use ILIKE to ignore case sensitivity
-#     @movie = db.exec(sql) # no witien value req because we are just deleting something
-#   ensure  
-#     db.close
-#   end
-#   redirect "/"
-# end
+post "/actors/:actor_id/delete" do
+  db = PG.connect(dbname: 'movies', host: 'localhost')
+  begin
+    actor_id = params[:actor_id]
+    sql = "DELETE FROM actors WHERE id = #{actor_id}" # use ILIKE to ignore case sensitivity
+    @actor = db.exec(sql) # no witien value req because we are just deleting something
+  ensure  
+    db.close
+  end
+  redirect "/"
+end
 
 # get "/movies/:movie_id/update" do
 #   db = PG.connect(dbname: 'movies', host: 'localhost')
