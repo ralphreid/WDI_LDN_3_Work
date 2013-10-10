@@ -14,12 +14,12 @@ get '/' do
   erb :index
 end
 
-get "/movies/:movie_id" do
+get "/actors/:actor_id" do
   db = PG.connect(dbname: 'movies', host: 'localhost')
   begin
-    movie_id = params[:movie_id].to_i
-    sql = "SELECT * FROM movies WHERE id=#{movie_id}"
-    @movie = db.exec(sql).first #because SQL does not know that a sinle record ..... it returns it as an array...so we call it .first .. we get a hash which we can call title on in the show
+    actor_id = params[:actor_id].to_i
+    sql = "SELECT * FROM actors WHERE id=#{actor_id}"
+    @actor = db.exec(sql).first #because SQL does not know that a sinle record ..... it returns it as an array...so we call it .first .. we get a hash which we can call title on in the show
   ensure
     db.close
   end
