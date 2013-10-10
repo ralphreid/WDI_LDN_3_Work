@@ -1,15 +1,13 @@
-<h3>Add a new movie</h3>
-  <% if @movie["id"]%>
-    <form method="post" action="/movies/<%= @movie["id"]%>/update">
+<h3>Add a new actor</h3>
+  <% if @actor["id"]%>
+    <form method="post" action="/actors/<%= @actor["id"]%>/update">
   <% else %>
     <form method="post" action"/new">
   <% end %>
   
-  Title: <input type='text' name='title' value="<%= @movie["title"] %>" />
-  Year: <input type='number' name='year' value="<%= @movie["year"] %>"/>
-  Rating: <input type='number' name='rated' value="<%= @movie["rated"] %>"/>
-  Poster: <input type='text' name='poster' value="<%= @movie["poster"] %>"/>
-  Director: <input type='text' name='director' value="<%= @movie["director"] %>"/>
-  Actors: <input type='text' name='actors' value="<%= @movie["actors"]%>"/>
+  First Name: <input type='text' name='first_name' value="<%= @actor["first_name"] %>" />
+  Last Name: <input type='text' name='last_name' value="<%= @actor["last_name"] %>"/>
+  Date of Birth: <input type='date' name='dob' value="<%= @actor["dob"] %>"/>
+  Image URL: <input type='text' name='image_url' value="<%= @actor["image_url"] %>"/>
   <input type='submit' />
 </form>
