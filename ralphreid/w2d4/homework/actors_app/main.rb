@@ -45,17 +45,18 @@ end
 #     erb :index  #use the same index so we can reuse the .each allready being used
 # end
 
-# post "/search" do
-#   db = PG.connect(dbname: 'movies', host: 'localhost')
-#   begin
-#     query_string = params[:query]
-#     sql = "SELECT * FROM movies WHERE title ILIKE '%#{query_string}%'" # use ILIKE to ignore case sensitivity
-#     @movies = db.exec(sql) # movies because potential more than one result
-#   ensure  
-#     db.close
-#   end
-#     erb :index  #use the same index so we can reuse the .each allready being used
-# end
+post "/search" do
+  db = PG.connect(dbname: 'movies', host: 'localhost')
+  begin
+    query_string = params[:query]
+    sql = "SELECT * FROM actors WHERE
+      ( first_name ILIKE '%#{query_string}%' ) OR ( last_name ILIKE '%#{query_string}%' )  " # use ILIKE to ignore case sensitivity
+    @actors = db.exec(sql) # actors because potential more than one result
+  ensure  
+    db.close
+  end
+    erb :index  #use the same index so we can reuse the .each already being used
+end
 
 # post "/movies/:movie_id/delete" do
 #   db = PG.connect(dbname: 'movies', host: 'localhost')
