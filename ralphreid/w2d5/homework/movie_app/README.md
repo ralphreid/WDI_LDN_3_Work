@@ -2,9 +2,9 @@ Backlog
 
 DONE - Refactor main.rb
 
-Create new foriegn key table to relating actors & movies
+DONE - Create new foriegn key table to relating actors & movies
 
-Refactor to include models
+Refactor to include models for both actos & movies
 
 Integrate Movie classes with seperated Handlers for movies & actors
 
@@ -15,5 +15,8 @@ creating a new actor or updating an existing actor
 
 Extend solution to include the ability to relate movies to actors when creating a new movie or updating an existing movie
 
-Populate db with italian movies in bulk - learn how to injest a csv flie with 
+Populate db with italian movies in bulk - learn how to injest a csv flie with postgres
+
 Enhance UI
+
+Implement referential integrity in the actors_movies table
