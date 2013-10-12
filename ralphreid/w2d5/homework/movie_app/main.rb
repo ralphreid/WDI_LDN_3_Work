@@ -1,7 +1,13 @@
 require 'sinatra'
 require 'sinatra/contrib/all'
+require 'sinatra/reloader'
 require 'pg'
 require 'pry'
+
+require_relative './models/actor.rb'
+# require_relative './models/movie.rb'
+also_reload './models/actor.rb'
+# also_reload './models/movie.rb'
 
 get '/' do
   db = PG.connect(dbname: 'movies', host: 'localhost')
