@@ -9,26 +9,27 @@ require_relative './models/actor.rb'
 also_reload './models/actor.rb'
 # also_reload './models/movie.rb'
 
-get '/' do
-  db = PG.connect(dbname: 'movies', host: 'localhost')
-  begin
-    sql = "SELECT * FROM actors"
-    @actors = db.exec(sql)
-  ensure
-    db.close
-  end
+# Configuration
+
+before do
+  @db = PG.connect(dbname: "movies", host: "localhost")
+  @actor = Actor.new(@db)
+  # @movie = Movies.new(@db)
+end
+
+after do
+  @db.close
+end
+
+# Routes Handlers
+
+get '/' do 
+  @actors = @actor.all
   erb :index
 end
 
 get "/actors/:actor_id" do
-  db = PG.connect(dbname: 'movies', host: 'localhost')
-  begin
-    actor_id = params[:actor_id].to_i
-    sql = "SELECT * FROM actors WHERE id=#{actor_id}"
-    @actor = db.exec(sql).first #because SQL does not know that a sinle record ..... it returns it as an array...so we call it .first .. we get a hash which we can call title on in the show
-  ensure
-    db.close
-  end
+  @actor = @actor.find params[:actor_id] #because SQL does not know that a sinle record ..... it returns it as an array...so we call it .first .. we get a hash which we can call title on in the show
   erb :show
 end
 
@@ -38,69 +39,26 @@ get "/new" do
 end
 
 post "/new" do
-  db = PG.connect(dbname: 'movies', host: 'localhost')
-  begin
-    sql = "INSERT INTO actors (dob, last_name, first_name, image_url)
-    VALUES ('#{params[:dob]}', '#{params[:last_name]}', '#{params[:first_name]}', '#{params[:image_url]}' ) RETURNING id"
-    @actor = db.exec(sql)
-    new_created_id = @actor[0]["id"]
-    redirect "/actors/#{new_created_id}"
-  ensure  
-    db.close
-  end
-    erb :index  #use the same index so we can reuse the .each allready being used
+  new_created_id = @actor.create params
+  redirect "/actors/#{new_created_id}"
 end
 
 post "/search" do
-  db = PG.connect(dbname: 'movies', host: 'localhost')
-  begin
-    query_string = params[:query]
-    sql = "SELECT * FROM actors WHERE
-      ( first_name ILIKE '%#{query_string}%' ) OR ( last_name ILIKE '%#{query_string}%' )  " # use ILIKE to ignore case sensitivity
-    @actors = db.exec(sql) # actors because potential more than one result
-  ensure  
-    db.close
-  end
-    erb :index  #use the same index so we can reuse the .each already being used
-end
-
-post "/actors/:actor_id/delete" do
-  db = PG.connect(dbname: 'movies', host: 'localhost')
-  begin
-    actor_id = params[:actor_id]
-    sql = "DELETE FROM actors WHERE id = #{actor_id}" # use ILIKE to ignore case sensitivity
-    @actor = db.exec(sql) # no witien value req because we are just deleting something
-  ensure  
-    db.close
-  end
-  redirect "/"
+  @actors = @actor.search params[:query] # actors because potential more than one 
+  erb :index
 end
 
 get "/actors/:actor_id/update" do
-  db = PG.connect(dbname: 'movies', host: 'localhost')
-  begin
-    actor_id = params[:actor_id]
-    sql = "SELECT * FROM actors WHERE id=#{actor_id}"
-    @actor = db.exec(sql).first # gets the first item returned
-  ensure  
-    db.close
-  end
+  @actor = @actor.find params[:actor_id]
   erb :new
 end
 
 post "/actors/:actor_id/update" do
-  db = PG.connect(dbname: 'movies', host: 'localhost')
-  begin
-    actor_id = params[:actor_id].to_i
-    sql = "UPDATE actors SET
-        first_name = '#{params[:first_name]}',
-        last_name = '#{params[:last_name]}',
-        dob = '#{params[:dob]}',
-        image_url = '#{params[:image_url]}'
-        WHERE id = #{actor_id}"
-    db.exec(sql)
-  ensure  
-    db.close
-  end
-  redirect "/actors/#{actor_id}"
+  @actor.update params
+  redirect "/actors/#{params[:actor_id]}"
+end
+
+post "/actors/:actor_id/delete" do
+  @actor.delete params[:actor_id]
+  redirect "/"
 end

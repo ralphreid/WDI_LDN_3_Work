@@ -8,7 +8,7 @@ create table actors
     );
 
 INSERT INTO actors (dob, last_name, first_name, image_url) 
-VALUES ('2012-12-12', 'Jim', 'Jamie', '')
+VALUES ('2012-12-12', 'Jim', 'Jamie', '');
 
 INSERT INTO actors (dob, last_name, first_name, image_url) 
-VALUES ('2012-01-12', 'Jane', 'Stone', '')
+VALUES ('2012-01-12', 'Jane', 'Stone', '');

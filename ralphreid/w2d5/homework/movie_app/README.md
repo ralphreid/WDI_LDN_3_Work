@@ -1,8 +1,6 @@
 Backlog
 
-
-
-Refactor main.rb
+DONE - Refactor main.rb
 
 Create new foriegn key table to relating actors & movies
 
