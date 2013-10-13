@@ -60,7 +60,8 @@ post "/new_movie" do
 end
 
 post "/search" do
-  @actors = @actor.search params[:query] # actors because potential more than one 
+  @actors = @actor.search params[:query] # actors because potential more than one
+  @movies = @movie.search params[:query] 
   erb :index
 end
 
