@@ -31,8 +31,12 @@ end
 
 get "/actors/:actor_id" do
   @actor = @actor.find params[:actor_id] #because SQL does not know that a sinle record ..... it returns it as an array...so we call it .first .. we get a hash which we can call title on in the show
-  
-  erb :show
+  erb :show_actor
+end
+
+get "/movies/:movie_id" do
+  @movie = @movie.find params[:movie_id]
+  erb :show_movie
 end
 
 get "/new" do
