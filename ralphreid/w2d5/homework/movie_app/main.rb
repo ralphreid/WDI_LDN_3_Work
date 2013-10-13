@@ -89,3 +89,8 @@ post "/actors/:actor_id/delete" do
   @actor.delete params[:actor_id]
   redirect "/"
 end
+
+post "/movies/:movie_id/delete" do 
+  @movie.delete params[:movie_id]
+  redirect "/"
+end
