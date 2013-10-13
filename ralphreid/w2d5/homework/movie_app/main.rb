@@ -39,14 +39,24 @@ get "/movies/:movie_id" do
   erb :show_movie
 end
 
-get "/new" do
+get "/new_actor" do
   @actor = {} # w initialize and empty hash inorder to initialze thie object because th if statment in erb :new requires this variable
-  erb :new
+  erb :new_actor
 end
 
-post "/new" do
+post "/new_actor" do
   new_created_id = @actor.create params
   redirect "/actors/#{new_created_id}"
+end
+
+get "/new_movie" do
+  @movie = {} # w initialize and empty hash inorder to initialze thie object because th if statment in erb :new requires this variable
+  erb :new_movie
+end
+
+post "/new_movie" do
+  new_created_id = @movie.create params
+  redirect "/movies/#{new_created_id}"
 end
 
 post "/search" do

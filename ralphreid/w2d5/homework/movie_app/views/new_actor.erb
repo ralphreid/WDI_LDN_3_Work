@@ -2,7 +2,7 @@
   <% if @actor["id"]%>
     <form method="post" action="/actors/<%= @actor["id"]%>/update">
   <% else %>
-    <form method="post" action"/new">
+    <form method="post" action"/new_actor">
   <% end %>
   
   First Name: <input type='text' name='first_name' value="<%= @actor["first_name"] %>" />
