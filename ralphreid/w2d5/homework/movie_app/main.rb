@@ -67,12 +67,22 @@ end
 
 get "/actors/:actor_id/update" do
   @actor = @actor.find params[:actor_id]
-  erb :new
+  erb :new_actor
 end
 
 post "/actors/:actor_id/update" do
   @actor.update params
   redirect "/actors/#{params[:actor_id]}"
+end
+
+get "/movies/:movie_id/update" do
+  @movie = @movie.find params[:movie_id]
+  erb :new_movie
+end
+
+post "/movies/:movie_id/update" do
+  @movie.update params
+  redirect "/movies/#{params[:movie_id]}"
 end
 
 post "/actors/:actor_id/delete" do
