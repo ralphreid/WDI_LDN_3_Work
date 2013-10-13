@@ -6,6 +6,19 @@
 <p>Last Name: <%= @actor["last_name"] %></p>
 <p>Date of Birth: <%= @actor["dob"] %></p>
 
+<h3>Movies</h3>
+<ul>
+  <% @actor_movies.each do |movie| %>
+    <li>
+      <h4>
+        <a href="/movies/<%= movie["id"] %>">
+          <%= "#{movie["title"]}" %>
+        </a>
+      </h4>
+    </li>
+  <% end %>
+</ul>
+
 <form method="POST" action="/actors/<%= @actor["id"] %>/delete">
   <input type="submit" value="delete" /> 
 </form>

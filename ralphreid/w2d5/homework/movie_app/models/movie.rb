@@ -8,13 +8,23 @@ class Movie
     @connection.exec "SELECT * FROM movies" #retun is implicit in ruby
   end
 
+  def actors id
+    @connection.exec("SELECT * FROM actors
+      INNER JOIN actors_movies
+      ON actors_movies.actor_id = actors.id
+      WHERE actors_movies.movie_id= #{id}")
+  end
+
   def find id
-    @movie = @connection.exec("SELECT * FROM movies WHERE id=#{id }").first
+    @movie = @connection.exec("SELECT * FROM movies WHERE id=#{id}").first
   end
 
   def create params  # TIP - called the argument params so that there was nothing to change in the method when we main
     @connection.exec("INSERT INTO movies (title, year, rated, poster, director, actors)
     VALUES ('#{params[:title]}', '#{params[:year]}', '#{params[:rated]}', '#{params[:poster]}', '#{params[:director]}', '#{params[:actors]}') RETURNING id") [0]["id"]
+    # @connection.exec( "INSERT INTO actors_movies (movie_id, actor_id)
+    #   VALUES ('#{params[:movie]}', '#{params[:actor]}')") 
+
   end
 
   def search query
