@@ -14,7 +14,7 @@ also_reload './models/movie.rb'
 before do
   @db = PG.connect(dbname: "movies", host: "localhost")
   @actor = Actor.new(@db)
-  # @movie = Movies.new(@db)
+  @movie = Movie.new(@db)
 end
 
 after do
@@ -25,11 +25,13 @@ end
 
 get '/' do 
   @actors = @actor.all
+  @movies = @movie.all
   erb :index
 end
 
 get "/actors/:actor_id" do
   @actor = @actor.find params[:actor_id] #because SQL does not know that a sinle record ..... it returns it as an array...so we call it .first .. we get a hash which we can call title on in the show
+  
   erb :show
 end
 

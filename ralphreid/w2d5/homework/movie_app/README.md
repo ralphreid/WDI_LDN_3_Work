@@ -4,9 +4,11 @@ DONE - Refactor main.rb
 
 DONE - Create new foriegn key table to relating actors & movies
 
-Refactor to include models for both actos & movies
+DONE - Refactor to include models for both actos & movies
 
-Integrate Movie classes with seperated Handlers for movies & actors
+Integrate Movie classes with seperated Handlers for movies & actors where appropriate
+
+Implement a TOGGLE select opiton and create page to allow either actors or movies to be created
 
 Refactor with combined movie & actors views and handlers
 

@@ -4,9 +4,9 @@ class Movie
     @connection = connection
   end
 
-  # def all
-  #   @connection.exec "SELECT * FROM movies" #retun is implicit in ruby
-  # end
+  def all
+    @connection.exec "SELECT * FROM movies" #retun is implicit in ruby
+  end
 
   # def find id
   #   @movie = @connection.exec("SELECT * FROM movies WHERE id=#{id }").first
