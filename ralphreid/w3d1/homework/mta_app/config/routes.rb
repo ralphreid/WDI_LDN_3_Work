@@ -1,4 +1,11 @@
 MtaApp::Application.routes.draw do
+  # resources :journey
+
+ root :to => "journey#index"
+  #map.root :controller => 'journey', :action => 'index'
+
+  # route :to => 'journey#index'
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
