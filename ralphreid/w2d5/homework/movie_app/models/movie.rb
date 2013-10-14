@@ -22,8 +22,9 @@ class Movie
   def create params  # TIP - called the argument params so that there was nothing to change in the method when we main
     @connection.exec("INSERT INTO movies (title, year, rated, poster, director, actors)
     VALUES ('#{params[:title]}', '#{params[:year]}', '#{params[:rated]}', '#{params[:poster]}', '#{params[:director]}', '#{params[:actors]}') RETURNING id") [0]["id"]
-    # @connection.exec( "INSERT INTO actors_movies (movie_id, actor_id)
-    #   VALUES ('#{params[:movie]}', '#{params[:actor]}')") 
+  
+    @connection.exec( "INSERT INTO actors_movies (movie_id, actor_id)
+      VALUES ('#{params[:movie].to_i}', '#{params[:actor].to_i}')") 
 
   end
 

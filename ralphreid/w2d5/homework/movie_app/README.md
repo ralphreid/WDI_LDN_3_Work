@@ -8,18 +8,14 @@ DONE - Refactor to include models for both actos & movies
 
 DONE - Integrate Movie classes with seperated Handlers for movies & actors where appropriate
 
-Extend solution to include the ability to relate actors to movies when 
-creating a new actor or updating an existing actor
 
-Extend solution to include the ability to relate movies to actors when creating a new movie or updating an existing movie
+BUG - Breaks when selecting a movie from an actor page and visa versa
 
-Implement a TOGGLE select opiton and create page to allow either actors or movies to be created
+BUG - actual insert values into the foriegn key table
 
-Refactor with combined movie & actors views and handlers
+BUG - Update of moves & actors breaks
 
 
-
-Populate db with italian movies in bulk - learn how to injest a csv flie with postgres
 
 Enhance UI
 

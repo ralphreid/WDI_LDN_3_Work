@@ -30,9 +30,8 @@ get '/' do
 end
 
 get "/actors/:actor_id" do
-  @actor_movies = @actor
+  @actor_movies = @actor.movies params[:actor_id]
   @actor = @actor.find params[:actor_id] #because SQL does not know that a sinle record ..... it returns it as an array...so we call it .first .. we get a hash which we can call title on in the show
-  @actor_movies = @actor_movies.movies params[:actor_id]
   erb :show_actor
 end
 
@@ -55,6 +54,7 @@ post "/new_actor" do
 end
 
 get "/new_movie" do
+  @actors = @actor.all
   @movie = {} # w initialize and empty hash inorder to initialze thie object because th if statment in erb :new requires this variable
   erb :new_movie
 end

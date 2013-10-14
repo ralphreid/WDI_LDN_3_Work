@@ -10,6 +10,15 @@
   Poster: <input type="URL" name="poster" value="<%= @movie["poster"]%>"/>
   Director: <input type="text" name="director" value="<%= @movie["director"]%>"/>
   
+  Related Actors: <select>
+    
+    <% @actors.each do |actor| %>
+      <option name='actor_id' value="<%= actor["id"].to_i %>">
+        <%= "#{actor["first_name"]} #{actor["last_name"]}" %>
+      </option>
+    <% end %>
+    
+  </select> 
     
   </select><input type="submit">
 </form>
