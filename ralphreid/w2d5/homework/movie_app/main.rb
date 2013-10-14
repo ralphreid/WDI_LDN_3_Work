@@ -70,6 +70,8 @@ post "/search" do
   erb :index
 end
 
+
+
 get "/actors/:actor_id/update" do
   @actor = @actor.find params[:actor_id]
   erb :new_actor
