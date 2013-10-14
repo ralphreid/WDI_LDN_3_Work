@@ -49,6 +49,9 @@ def buy
     
     $brokerage.clients[client].portfolios[portfolio_name].stocks[stock_symbol] = Stock.new(stock_symbol, num_shares)
     $brokerage.clients[client].portfolios[portfolio_name].stocks[stock_symbol].buy_price = price
+  
+    binding.pry
+
   end
 
   def sell
