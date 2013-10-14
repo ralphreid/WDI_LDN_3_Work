@@ -7,6 +7,20 @@
 <p>Actors: <%= @movie["actors"]%></p>
 <p>Genre: <%= @movie["genre"]%></p>
 
+
+<ul>
+  <h3>Actors</h3>
+  <% @movie_actors.each do |actor| %>
+    <li>
+      <h4>
+        <a href="/actors/<%= actor["actor_id"] %>">
+          <%= "#{actor["first_name"]} #{actor["last_name"]}"%>
+        </a>
+      </h4>
+    </li>
+  <% end %>
+</ul>
+
 <form method="POST" action="/movies/<%= @movie["id"]%>/delete" >
   <input type="submit" value="delete" />
 </form>
