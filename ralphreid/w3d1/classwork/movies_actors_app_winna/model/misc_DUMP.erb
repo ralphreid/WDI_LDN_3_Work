@@ -1,0 +1,32 @@
+<!-- Movies 
+
+<h3><%= @movie["title"]%></h3>
+
+<img src="<%= @movie["poster"] %>">
+
+<p>Year: <%= @movie["year"]%></p>
+<p>Rated: <%= @movie["rated"]%></p>
+<p>Actors: <%= @movie["actors"]%></p>
+<p>Genre: <%= @movie["genre"]%></p>
+
+<form method="POST" action="/movies/<%= @movie["id"]%>/delete" >
+  <input type="submit" value="delete" />
+</form>
+<a href="/movies/<%= @movie["id"]%>/update"> Update <%= @movie["title"]%> </a>
+
+-->
+
+<h3>Add a new Movie</h3>
+<% if @movie["id"]%>
+  <form method="post" action="/movies/<%= @movie["id"]%>/update">
+<% else %>
+  <form method="post" action="/new">
+<% end %>
+  Title: <input type="text" name="title" value="<%= @movie["title"]%>" />
+  Year: <input type="number" name="year" value="<%= @movie["year"]%>"/>
+  Rated: <input type="number" name="rated" value="<%= @movie["rated"]%>"/>
+  Poster: <input type="text" name="poster" value="<%= @movie["poster"]%>"/>
+  Director: <input type="text" name="director" value="<%= @movie["director"]%>"/>
+  Actors: <input type="text" name="actors" value="<%= @movie["actors"]%>"/>
+  <input type="submit">
+</form>
