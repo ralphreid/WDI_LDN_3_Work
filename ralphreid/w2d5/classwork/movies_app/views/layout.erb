@@ -1,25 +1,24 @@
 <html>
 <head>
-  <title>Movies app</title>
+  <title>Movies and Actors App</title>
 </head>
 <body>
-  <header>
-    <a href="/">
-      <h1>Movies app</h1>
-    </a>
-    <form method="post" action="/search">
-      <input type="text" name="query" />
-      <input type="submit" />
-    </form>
-    <a href="/new"> Add a new movie </a>
-  </header>
-  <section>
-    <%= yield %>
-  </section>
-  <footer>
+    <header>
+      <a href="/">
+        <h1>Movies and Actors App</h1>
+      </a>
+      <form method='post' action='/search'>
+        <input type='search' name='query' />
+        <input type='submit' />
+      </form>
+      <a href="/new_actor">Add a new actor</a>
+      <a href="/new_movie">Add a new movie</a>
+    </header>
+    <section>
+      <%= yield %>
+    </section>
+    <footer>
 
-  </footer>
-  
-  
+    </footer>
 </body>
 </html>

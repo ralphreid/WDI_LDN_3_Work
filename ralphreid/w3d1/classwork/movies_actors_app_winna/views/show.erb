@@ -1,0 +1,40 @@
+<% if @actor_find %>
+
+<h3><%= @actor_find["first_name"] %> <%= @actor_find["last_name"] %></h3>
+
+<img src="<%= @actor_find["image_url"] %>">
+
+<p>First Name: <%= @actor_find["first_name"] %></p>
+<p>Last Name: <%= @actor_find["last_name"] %></p>
+<p>DOB: <%= @actor_find["dob"] %></p>
+
+<form method="POST" action="/actors/<%= @actor_find["id"] %>/delete">
+  <input type="submit" value="delete"/>
+</form>
+
+<a href="/actors/<%= @actor_find["id"]%>/update">
+Update <%= @actor_find["first_name"] %> </a>
+
+<h3>Movies Index</h3>
+<a href="/actors/<%= @actor_find["id"]%>/update">
+Update Movies for <%= @actor_find["first_name"] %> </a>
+<ul>
+<% @actor_movies.each do |movie| %>
+  <li>
+    <h4>
+      <a href="/movies/<%= movie["id"]%>">
+        <%= "#{movie["title"]}"%>
+      </a>
+    </h4>
+  </li>
+<% end %>
+</ul>
+
+
+
+
+<% else %>
+
+No page!!
+
+<% end %>

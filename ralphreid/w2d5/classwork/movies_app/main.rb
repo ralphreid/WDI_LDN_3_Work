@@ -1,16 +1,19 @@
-require "sinatra"
-require "sinatra/contrib/all"
+require 'sinatra'
+require 'sinatra/contrib/all'
 require 'sinatra/reloader'
-require "pg"
-require "pry"
+require 'pg'
+require 'pry'
 
-require_relative './model/movie.rb'
-also_reload './model/movie.rb'
+require_relative './models/actor.rb'
+require_relative './models/movie.rb'
+also_reload './models/actor.rb'
+also_reload './models/movie.rb'
 
-# Configuration 
+# Configuration
 
 before do
   @db = PG.connect(dbname: "movies", host: "localhost")
+  @actor = Actor.new(@db)
   @movie = Movie.new(@db)
 end
 
@@ -19,34 +22,68 @@ after do
 end
 
 # Routes Handlers
-get "/" do
+
+get '/' do 
+  @actors = @actor.all
   @movies = @movie.all
   erb :index
 end
 
+get "/actors/:actor_id" do
+  @actor_movies = @actor.movies params[:actor_id]
+  @actor = @actor.find params[:actor_id] #because SQL does not know that a sinle record ..... it returns it as an array...so we call it .first .. we get a hash which we can call title on in the show
+  binding.pry
+  erb :show_actor
+end
+
 get "/movies/:movie_id" do
+  @movie_actors = @movie.actors params[:movie_id] 
   @movie = @movie.find params[:movie_id]
-  erb :show
+  erb :show_movie
 end
 
-get "/new" do
-  @movie = {}
-  erb :new
+get "/new_actor" do
+  @movies = @movie.all
+  @actor = {} # w initialize and empty hash inorder to initialze thie object because th if statment in erb :new requires this variable
+  erb :new_actor
 end
 
-post "/new" do
-  new_created_id = @movie.create params #TIP this should always be called params so Sinatra can get the session hash 
+post "/new_actor" do
+  new_created_id = @actor.create params
+  # new_movie_rel = @actor.create_movie_relationship params
+  redirect "/actors/#{new_created_id}"
+end
+
+get "/new_movie" do
+  @actors = @actor.all
+  @movie = {} # w initialize and empty hash inorder to initialze thie object because th if statment in erb :new requires this variable
+  erb :new_movie
+end
+
+post "/new_movie" do
+  new_created_id = @movie.create params
   redirect "/movies/#{new_created_id}"
 end
 
 post "/search" do
+  @actors = @actor.search params[:query] # actors because potential more than one
   @movies = @movie.search params[:query] 
   erb :index
 end
 
+get "/actors/:actor_id/update" do
+  @actor = @actor.find params[:actor_id]
+  erb :new_actor
+end
+
+post "/actors/:actor_id/update" do
+  @actor.update params
+  redirect "/actors/#{params[:actor_id]}"
+end
+
 get "/movies/:movie_id/update" do
   @movie = @movie.find params[:movie_id]
-  erb :new
+  erb :new_movie
 end
 
 post "/movies/:movie_id/update" do
@@ -54,26 +91,12 @@ post "/movies/:movie_id/update" do
   redirect "/movies/#{params[:movie_id]}"
 end
 
+post "/actors/:actor_id/delete" do
+  @actor.delete params[:actor_id]
+  redirect "/"
+end
+
 post "/movies/:movie_id/delete" do 
   @movie.delete params[:movie_id]
   redirect "/"
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

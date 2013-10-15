@@ -1,0 +1,7 @@
+<h3>Add an actor for the Movie</h3>
+<form action="/movies/<%= @movie['id']%>/actor" method="post">
+<select name="actor_id">
+  <%= @actors.map{ |actor| "<option value='#{actor["id"]}'>#{actor["first_name"]}</option>" }%>
+  <input type="submit">
+</select>
+</form>

@@ -1,0 +1,26 @@
+<h3>Add a new actor</h3>
+  <% if @actor["id"]%>
+    <form method="post" action="/actors/<%= @actor["id"]%>/update">
+  <% else %>
+    <form method="post" action"/new_actor">
+  <% end %>
+  
+  First Name: <input type='text' name='first_name' value="<%= @actor["first_name"] %>" />
+  Last Name: <input type='text' name='last_name' value="<%= @actor["last_name"] %>"/>
+  Date of Birth: <input type='date' name='dob' value="<%= @actor["dob"] %>"/>
+  Image URL: <input type='URL' name='image_url' value="<%= @actor["image_url"] %>"/>
+  Related Movies: <select>
+    
+    <% @movies.each do |movie| %>
+      <option name='movie_id' value="<%= movie["id"].to_i %>">
+        <%= "#{movie["title"]}" %>
+      </option>
+    <% end %>
+    
+  </select>
+
+
+  <input type='submit' />
+</form>
+
+
