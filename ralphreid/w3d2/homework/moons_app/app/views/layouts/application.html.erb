@@ -7,6 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<h1>Moon App</h1>
+  <nav>
+    <%= link_to 'Moons', moons_path %>
+    |
+    <%= link_to 'New Moon', new_moon_path %>
+
+  </nav>
 
 <%= yield %>
 
