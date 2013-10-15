@@ -8,3 +8,6 @@ https://www.evernote.com/shard/s6/sh/c71971e6-a7d3-4a05-ae47-78a174711e63/3212bd
 
 Session: Working with the data directly
 https://www.evernote.com/shard/s6/sh/e3cff17a-d39d-4497-b02a-6283b429732e/9eb62a8e4ce8fbf860786bb389df8f2a
+
+Session: Lab - Planets_app
+https://www.evernote.com/shard/s6/sh/0cc8dee6-9441-4458-b0f5-07f015752e4e/fac85628cd45e12fb677b3570f454722
