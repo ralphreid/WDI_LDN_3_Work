@@ -1,0 +1,24 @@
+<h1>MTA</h1>
+
+<% if @number_of_stations %>
+<h3><%= @number_of_stations %>stations for your journery</h3>
+<% end %>
+
+<pre>
+   mta = {
+      n:['ts', '34th', '28th-n', '23rd-n', 'us', '8th'],
+      l:['8th', '6th', 'us', '3rd', '1st'],
+      s:['gc', '33rd', '28th-s', '23rd-s', 'us', 'ap']
+    }
+</pre>
+<form method="post" action="/mta">
+   Start Line:<br>
+   <input type="text" name="start_line"><br />
+   Start Staion:<br>
+   <input type="text" name="start_station"><br>
+   End Line<br>
+   <input type="text" name="end_line"><br>
+   End Station<br>
+   <input type="text" name="end_station"><br>
+   <input type="submit">
+</form>
