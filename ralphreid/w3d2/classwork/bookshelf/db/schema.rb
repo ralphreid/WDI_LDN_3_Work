@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131015104925) do
+ActiveRecord::Schema.define(:version => 20131015132253) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20131015104925) do
     t.text     "content"
     t.string   "publishing"
     t.datetime "released_date"
+    t.boolean  "published"
   end
 
 end
