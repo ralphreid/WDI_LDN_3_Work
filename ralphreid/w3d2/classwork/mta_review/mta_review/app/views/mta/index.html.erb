@@ -11,7 +11,22 @@
       s:['gc', '33rd', '28th-s', '23rd-s', 'us', 'ap']
     }
 </pre>
-<form method="post" action="/mta">
+
+<%= form_tag "/mta" do%>
+  Start Line:<br>
+  <%= text_field_tag "start_line" %><br>
+  Start Station:<br>
+  <%= text_field_tag "start_station" %><br>
+  End Line:<br>
+  <%= text_field_tag "end_line" %><br>
+  End Station:<br>
+  <%= text_field_tag "end_station" %><br>
+
+  <%= submit_tag "sent it!" %>
+
+<% end %>
+
+<!-- <form method="post" action="/mta">
    Start Line:<br>
    <input type="text" name="start_line"><br />
    Start Staion:<br>
@@ -22,3 +37,4 @@
    <input type="text" name="end_station"><br>
    <input type="submit">
 </form>
+ -->
