@@ -1,4 +1,5 @@
 Class Notes:
+https://www.evernote.com/shard/s6/sh/3eb58a1a-f76b-41ed-a9c1-db7356958a35/a681d49155808feaf8724510ac31fc5d
 
 Session: Homework Review w2d1 MTA APP
 https://www.evernote.com/shard/s6/sh/b2470963-b8c3-435e-bca0-cb3a9d95d0ad/a93883db9e5b8ae64d0486ebc6d767b8
