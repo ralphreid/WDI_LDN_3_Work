@@ -2,7 +2,7 @@ MoonsApp::Application.routes.draw do
   
 
 
-  get    '/moons',          to: 'moons#index',  as: :moons
+  get    '/moons',          to: 'moons#index',  as: :moons #moons_url moons_path
   post   '/moons',          to: 'moons#create'
   get    '/moons/new',      to: 'moons#new',    as: :new_moon
   get    '/moons/:id/edit', to: 'moons#edit',   as: :edit_moon

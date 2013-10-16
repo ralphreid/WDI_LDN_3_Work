@@ -6,10 +6,12 @@ class MoonsController < ApplicationController
 
   def new
     @moon = Moon.new
+  end
 
-    respond_to do |format|
-      format.html
-    end
+  def create
+    moon = Moon.new(params[:moon])
+    moon.save
+    redirect_to moons_url
   end
 
 
