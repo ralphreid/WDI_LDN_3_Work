@@ -1,0 +1,16 @@
+!!! 5
+%html
+  %head
+    %title
+  %body
+    #wrapper
+      #header
+        %ul.menu
+          %li.menu-item
+            Home
+          %li.menu-item
+            Contact
+          %li.menu-item
+            About
+      #sidebar
+        .favourites

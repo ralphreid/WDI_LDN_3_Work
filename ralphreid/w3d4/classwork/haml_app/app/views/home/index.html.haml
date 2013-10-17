@@ -2,14 +2,20 @@
   %p
     DIV 1
   %div#div_2
-    %p
-      DIV 2
-  .text-right#div_3
-    DIV 3
-    %p
-      =@text
+    DIV 2
+    %form{method: :post, action: "/result"}
+      %input{type: :text, placeholder: :Username}
+      %input{type: :submit, value: :Send}
+.text-right#div_3
+  DIV 3
+  %p
+    =@text
 %div#div_4
   DIV 4
   - if @text == "Hello, WDI"
     %p
       = @text.upcase
+      something else
+  -7.times do |number|
+    %p= number
+  %p INLINE TEXT

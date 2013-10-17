@@ -1,0 +1,28 @@
+!!! 5
+%html
+  %head
+    %title HamlQuiz
+    = stylesheet_link_tag "application", media: 'all'
+  %body
+    #wrapper
+      #header
+        %p I AM YOUR HEADER
+        %ul.menu
+          %li.menu-item Home
+          %li.menu-item Contact
+          %li.menu-item About
+      #sidebar
+        .favourites
+        .todo-list
+      #content
+        %form{action: '/postform', method: :post}
+          %input{name: :name, placeholder: 'Name', type: :text}
+          %input{name: :email, placeholder: 'Email', type: :text}
+          %label Sex
+          %select
+            %option{value: :f} Female
+            %option{value: :m} Male
+      #footer
+        %p I AM YOUR FOOTER
+        %p.very-big I am big
+        %p Copyright 2013
