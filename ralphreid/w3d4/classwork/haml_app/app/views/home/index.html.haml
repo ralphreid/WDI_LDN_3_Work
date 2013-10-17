@@ -1,0 +1,15 @@
+#div_1
+  %p
+    DIV 1
+  %div#div_2
+    %p
+      DIV 2
+  .text-right#div_3
+    DIV 3
+    %p
+      =@text
+%div#div_4
+  DIV 4
+  - if @text == "Hello, WDI"
+    %p
+      = @text.upcase
