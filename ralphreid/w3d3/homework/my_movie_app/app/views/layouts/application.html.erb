@@ -8,6 +8,16 @@
 </head>
 <body>
 
+<nav>
+  <%= link_to 'Movies', movies_path %>
+  |
+  <%= link_to 'New Movie', new_movie_path %>
+  |
+    <%= link_to 'Actors', actors_path %>
+  |
+  <%= link_to 'New Actors', new_actor_path %>
+</nav>
+
 <%= yield %>
 
 </body>

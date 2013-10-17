@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new params[:movie]
     @movie.save
-    redirect_to @ovie
+    redirect_to @movie
   end
 
   def edit

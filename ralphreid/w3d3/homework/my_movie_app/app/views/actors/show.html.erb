@@ -1,0 +1,19 @@
+<h1><%= @actor.first_name %></h1>
+
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <td><%= @actor.first_name%> AU</td>
+  </tr>
+  <tr>
+    <th>Last Name</th>
+    <td><%= @actor.last_name%> </td>
+  </tr>
+  <tr>
+    <th>DOB</th>
+    <td><%= @actor.dob %> </td>
+  </tr>
+</table>
+
+<%= image_tag @actor.image %>
