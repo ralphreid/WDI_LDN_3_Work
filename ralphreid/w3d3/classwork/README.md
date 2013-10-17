@@ -1,4 +1,5 @@
 Class Notes:
+https://www.evernote.com/shard/s6/sh/7001aebc-fec3-4f83-9bb3-4ed0faa44b61/658717d42d4b900da751069292c6b8af
 
 Session: Planet App
 https://www.evernote.com/shard/s6/sh/344e698b-d7d2-4d0a-aea9-620bb90e8eaa/a8ab98f4b5c11b42248cbb89ccc3d2c0
