@@ -2,6 +2,14 @@
 
 <%= render 'form' %>
 
+<fieldset>
+  <%= form_for(@movie) do |f| %>
+    <%= select_tag 'actor_id', 
+    options_from_collection_for_select( @actors, "id", "full_name") %>
+    <%= f.submit %>
+
+  <% end %>
+
 <br/>
 <%= link_to 'Show', @movie %> |
 <%= link_to 'Back', movies_path %>

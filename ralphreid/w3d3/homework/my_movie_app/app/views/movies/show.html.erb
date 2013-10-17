@@ -20,4 +20,11 @@
   </tr>
 </table>
 
-<%= image_tag @movie.image %>
+<%= image_tag @movie.image, width:100 %>
+
+<ul>
+  <% @movie.actors.each do |actor| %>
+   <li> <%= actor.full_name %> </li>
+
+ <% end %>
+</ul> 

@@ -23,6 +23,8 @@ User can edit the relationships
 Backlog
 Order the index lists
 Add more discriptive link text to actors index links (so more than just first name)
+Add edit links to show tables
+update form tags
 
 
 
