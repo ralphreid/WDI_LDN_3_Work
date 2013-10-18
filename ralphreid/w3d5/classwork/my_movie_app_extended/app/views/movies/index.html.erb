@@ -1,7 +1,10 @@
+<% content_for :header do %>
+  Header content imported from index template
+<% end %>
+
+
 <h1>My Movie App - Movies</h1>
 
-<% @movies.each do |movie| %>
 
- <%= render 'movie' %>
+ <%= render @movies %>
  
-<% end %>
