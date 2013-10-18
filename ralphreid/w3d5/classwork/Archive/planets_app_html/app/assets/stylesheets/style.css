@@ -80,7 +80,7 @@ th {
   width: auto;
 }
 
-.standard-form input[type="radio"] {
+.standard-form .field input[type="radio"] {
   width: auto;
 }
 
