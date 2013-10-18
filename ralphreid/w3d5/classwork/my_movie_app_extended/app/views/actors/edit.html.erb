@@ -1,0 +1,14 @@
+<h1>Editing actor</h1>
+
+<%= render 'form' %>
+
+<fieldset>
+  <%= form_for(@actor) do |f| %>
+    <%= select_tag "movie_id", options_from_collection_for_select(@movies, 'id', 'title') %>
+    <%= f.submit %>
+  <% end %>
+</fieldset>
+
+<br/>
+<%= link_to 'Show', @actor %> |
+<%= link_to 'Back', actors_path %>

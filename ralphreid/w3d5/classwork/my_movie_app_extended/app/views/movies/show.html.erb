@@ -1,0 +1,30 @@
+<h1><%= @movie.title %></h1>
+
+
+<table>
+  <tr>
+    <th>Title</th>
+    <td><%= @movie.title %> AU</td>
+  </tr>
+  <tr>
+    <th>Year</th>
+    <td><%= @movie.year%> </td>
+  </tr>
+  <tr>
+    <th>Rated</th>
+    <td><%= @movie.rated %> </td>
+  </tr>
+  <tr>
+    <th>Director</th>
+    <td><%= @movie.director %></td>
+  </tr>
+</table>
+
+<%= image_tag @movie.image, width:100 %>
+
+<ul>
+  <% @movie.actors.each do |actor| %>
+   <li> <%= actor.full_name %> </li>
+
+ <% end %>
+</ul> 

@@ -2,4 +2,5 @@ Class Notes:
 
 
 Session: HAML
-https://www.evernote.com/shard/s6/sh/c6fdd2ad-18ba-4abf-b947-e261ee3fb776/6de175abc68b80546daf0a22ccad8d17
+https://www.evernote.com/shard/s6/sh/306487be-a7e1-4b2b-b644-a5ecca0a4410/ed3992d5568c4abf45033c252c841a45
+

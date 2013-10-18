@@ -1,0 +1,30 @@
+
+
+  <%= form_for(@movie) do |f| %>
+  <fieldset>
+    <legend>Movie Details</legend>
+    <div class="field">
+      <%= f.label :title, 'Title' %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :year, 'Year' %>
+      <%= f.number_field :year %>
+    </div>
+    <div class="field">
+      <%= f.label :rated, 'Rated' %>
+      <%= f.number_field :rated %>
+    </div>
+    <div class="field">
+      <%= f.label :director, "Director" %>
+      <%= f.text_field :director %>
+    </div>
+    <div class="field">
+      <%= f.label :image, "Image URL" %>
+      <%= f.url_field :image%>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </fieldset>
+<% end %>
