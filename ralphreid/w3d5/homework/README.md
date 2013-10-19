@@ -1,14 +1,33 @@
+---------------------------
+FOR DAVID
+---------------------------
+- how can I copy text from an app/website and then paste it as string maintining line breaks?
+
+
+---------------------------
 Psedue Code:
+---------------------------
+- user creates a new book
+- user creates a new recipie by filling in the form
+- user copy & pasts recipie instructions into a text field
+- line breaks are captured & result is rendered into an ordered list
+- recipe is shown
+- list of recipies is shown
 
 
-
-Data Model:
-
-
+---------------------------
 Backlog:
+---------------------------
 
+??should I implement foriegn key constraints
+- implement unit coversions
+- implement measure conversions
+- implement batch import and recipie parsing
+- implement re-direct to suitible ingredient substitures based on the receipe
 
+---------------------------
 Specification for CookBook App:
+---------------------------
 
 You’ve been tasked with creating a Rails app that models a common cookbook's behaviour. It should allow users to create and look at recipes, as well as see ingredients needed and cooking directions. Your app should have at least a Recipe model with its CRUD actions, and an Ingredient model with its CRUD actions.
 
