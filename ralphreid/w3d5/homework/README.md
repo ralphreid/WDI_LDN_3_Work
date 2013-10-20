@@ -4,6 +4,7 @@ FOR DAVID
 - how can I copy text from an app/website and then paste it as string maintining line breaks?
 - do I include foriegn key ids? if so, do they get included in the model statements?
 - I created an ARCHIVE folder containing an older version; I had problems in the console relating Image instances to a recipe. Can find time in the next week to recreate the issue and help me understand the problem. In the live version, I have simplified the model & db to keep the data model simplier.
+- I created the original model useing strings rather than symbols in the the migration. If I want to change to symbols, is this simple or worthwhile?
 
 ---------------------------
 Psedue Code:
