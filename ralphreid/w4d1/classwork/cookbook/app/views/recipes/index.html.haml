@@ -2,4 +2,5 @@
 - @recipes.each do |recipe|
   %h3= link_to recipe.name, recipe
   = image_tag recipe.image, width: 100
+  = total_cost recipe
 

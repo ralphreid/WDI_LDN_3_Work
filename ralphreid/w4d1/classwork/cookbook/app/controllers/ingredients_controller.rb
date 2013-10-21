@@ -13,8 +13,12 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    ingredient = Ingredient.create params[:ingredient]
-    redirect_to ingredient
+    @ingredient = Ingredient.new params[:ingredient]
+    if @ingredient.save
+      redirect_to @ingredient
+    else
+      render :new
+    end
   end
 
   def edit

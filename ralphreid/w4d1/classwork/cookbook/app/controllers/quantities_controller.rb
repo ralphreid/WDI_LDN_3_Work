@@ -6,8 +6,12 @@ class QuantitiesController < ApplicationController
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    @recipe.quantities.create params[:quantity]
-    redirect_to @recipe
+    @quantity = @recipe.quantities.new params[:quantity]
+    if @quantity.save
+      redirect_to @recipe
+    else
+      render :new
+    end
   end
 
 end

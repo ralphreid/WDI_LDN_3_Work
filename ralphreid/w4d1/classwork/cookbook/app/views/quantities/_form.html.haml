@@ -1,3 +1,7 @@
+%ul
+  - @quantity.errors.full_messages.each do |error|
+    %li.errors=error
+
 = form_for [@recipe, @quantity] do |f|
   = f.label :ingredient_id, 'ingredient'
   = f.select :ingredient_id, options_from_collection_for_select(Ingredient.all, 'id', 'name')
