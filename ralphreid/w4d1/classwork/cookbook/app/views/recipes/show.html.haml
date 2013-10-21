@@ -1,0 +1,11 @@
+%h2= @recipe.name
+
+= image_tag @recipe.image, width: 100
+
+- @recipe.quantities.each do |quantity|
+  %li= quantity.ingredient.name
+  %li= "#{quantity.quantity} #{quantity.measurement}"
+
+= link_to "edit", edit_recipe_path(@recipe)
+= link_to "Add Quantity for this recipe", new_recipe_quantity_path(@recipe)
+= link_to "destroy", recipe_path(@recipe), method: :delete
