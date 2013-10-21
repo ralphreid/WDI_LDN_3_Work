@@ -1,0 +1,8 @@
+%h1 Check out these Ingredients!
+%h2 List of Ingredients
+%ul
+- @ingredients.each do |ingredient|
+  %li= link_to ingredient.name, ingredient_path(ingredient)
+
+ 
+ 

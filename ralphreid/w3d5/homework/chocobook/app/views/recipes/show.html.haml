@@ -1,0 +1,36 @@
+%h1= @recipe.name
+- if @recipe.url.present?
+  = image_tag(@recipe.url, width: '150', class: 'recipe-image')
+
+%ul
+  - @recipe.ingredients.each do |ingredient|
+    %li= ingredient.name
+
+%table
+  %tr
+    %th
+    %td= @recipe.rating
+  %tr
+    %th
+    %td= @recipe.cooking_time
+  %tr
+    %th
+    %td= @recipe.prep_time
+  %tr
+    %th Serving
+    %td= @recipe.servings
+  %tr
+    %th Source
+    %td= @recipe.source
+  %tr
+    %th Instructions
+    %td= @recipe.instructions
+  
+  %nav.nav-bottom
+    = link_to 'Delete this recipe', @recipe, :method =>:delete, :confirm =>"Are you sure you want to delete this recipe?"
+    |
+    = link_to 'Edit this recipe', edit_recipe_path(@recipe)
+
+
+
+

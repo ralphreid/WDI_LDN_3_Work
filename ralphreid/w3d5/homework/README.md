@@ -5,6 +5,9 @@ FOR DAVID
 - do I include foriegn key ids? if so, do they get included in the model statements?
 - I created an ARCHIVE folder containing an older version; I had problems in the console relating Image instances to a recipe. Can find time in the next week to recreate the issue and help me understand the problem. In the live version, I have simplified the model & db to keep the data model simplier.
 - I created the original model useing strings rather than symbols in the the migration. If I want to change to symbols, is this simple or worthwhile?
+- How can I create a form which captures the amounts of ingredients for a specific recipe
+- How can I incorporate capturing ingredients when a new recipie is created...i think i need to extend the create & new methods
+- I would like to to change the text-decoration so that links are not highlighted. The css I have tried does not seem to work and would appreciate a hint.
 
 ---------------------------
 Psedue Code:
@@ -26,6 +29,10 @@ Backlog:
 - implement measure conversions
 - implement batch import and recipie parsing
 - implement re-direct to suitible ingredient substitures based on the receipe
+- allow WYSIWG entry of instructions with listing
+- enable a form which allows entry of amount of ingredients
+- add link to recipe on the ingredient show page
+- allow users to relate ingredients to reciepies from the ingredents show view
 
 ---------------------------
 Specification for CookBook App:

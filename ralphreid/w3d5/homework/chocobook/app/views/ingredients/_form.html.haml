@@ -1,0 +1,15 @@
+= form_for(@ingredient, :http => { :class => 'ingredient-form'}) do |f|
+  %fieldset
+    %legend Ingredient Details
+    .field
+    = f.label :name, "Ingredient's Name"
+    = f.text_field :name
+
+    .field
+    = f.label :image, "Image URL"
+    = f.url_field :image
+
+
+    .actions
+    = f.submit
+

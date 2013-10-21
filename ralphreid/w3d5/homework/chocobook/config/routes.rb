@@ -1,6 +1,8 @@
 Chocobook::Application.routes.draw do
   
-  root :to => "recipebook#index"
-  resources :recipebook
+  root :to => "recipes#index"
+  resources :recipes
+  resources :ingredients
+  resources :amounts
 
 end

@@ -1,0 +1,30 @@
+= form_for(@recipe, :http => { :class => 'recipe-form'}) do |f|
+  %fieldset
+    %legend Recipe Details
+    .field
+    = f.label :name, "Recipe's Name"
+    = f.text_field :name
+
+    .field
+    = f.label :url, "Image URL"
+    = f.url_field :url
+
+    .field
+    = f.label :servings, "Serves how many people?"
+    = f.text_field :servings
+
+    .field
+    = f.label :rating, 'Rating'
+    = f.number_field :rating
+
+    .field
+    = f.label :prep_time, "How long to prepare?"
+    = f.text_field :prep_time
+
+    .field
+    = f.label :instructions, "Instructions"
+    = f.text_field :instructions
+
+    .actions
+    = f.submit
+

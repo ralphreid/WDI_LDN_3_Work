@@ -1,0 +1,12 @@
+%h1 Editing Recipe
+= render 'form'
+
+%fieldset
+  = form_for(@recipe) do |f|
+    =select_tag 'ingredient_id', options_from_collection_for_select(@ingredients, 'id', 'name')
+    = f. submit
+
+%nav.nav-bottom
+=link_to 'Show', @recipe
+|
+=link_to 'Back', @recipe

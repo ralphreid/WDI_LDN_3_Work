@@ -1,0 +1,8 @@
+%h1 Check out these recipes!
+%h2 List of Recipes
+%ul
+- @recipes.each do |recipe|
+  %li= link_to recipe.name, recipe_path(recipe)
+
+ 
+ 

@@ -1,0 +1,21 @@
+body {
+  background: black;
+  color: white;
+  font-family: helvetica;
+  a:visited {text-decoration: none;}
+  a:hover {text-decoration: bold;}
+}
+
+h1 {
+   text-align: center;
+}
+
+nav{
+
+  text-align: center;
+
+  &.nav-top {background: grey}
+
+  &.nav-bottom {background: grey}
+}
+
