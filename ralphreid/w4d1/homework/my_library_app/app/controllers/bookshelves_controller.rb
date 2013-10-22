@@ -9,15 +9,16 @@ class BookshelvesController < ApplicationController
   end
 
   def new
-    @book = Book.find params[:book_id]
-    @bookshelf = @book.bookshelves.new
-  end
+  #   @book = Book.find params[:book_id]
+  #   @bookshelf = Bookshelf.new
+  #   @bookshe
+  # end
 
   def create
-    @book = Book.find params[:book_id]
-    @bookshelf = @book.bookshelves.new params[:bookshelf]
-    if @bookshelf.save
-      redirect to @book
+    # @book = Book.find params[:book_id]
+    # @bookshelf = @book.bookshelves.new params[:bookshelf]
+    # if @bookshelf.save
+    #   redirect to @book
   end
 
   def edit

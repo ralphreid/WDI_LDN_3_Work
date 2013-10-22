@@ -1,0 +1,13 @@
+/ %ul
+/   - @bookshelf.errors.full_messages.each do |error|
+/     %li.errors=error
+
+= form_for [@book, @bookshelf] do |f|
+  = f.label :book_id, 'book'
+  = f.select :books_id, options_from_collection_for_select(Book.all, 'id', 'title')
+  %br/
+  = f.label :category
+  = f.text_field :category
+  %br/
+  
+  = f.submit
