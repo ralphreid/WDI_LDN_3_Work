@@ -1,5 +1,5 @@
 Class Notes:
-
+https://www.evernote.com/shard/s6/sh/8f6d77b0-0662-44f4-895f-a6b7290b3acd/811c260cef9e2651ed6b85ccee160a59
 
 Session - HW Review:
 https://www.evernote.com/shard/s6/sh/5b5701e3-a655-46c5-9be6-1eae6b310edb/442bf2e6c766549e01b9d8b46219df25
