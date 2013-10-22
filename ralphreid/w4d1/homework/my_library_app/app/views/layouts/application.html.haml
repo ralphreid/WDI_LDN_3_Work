@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %title Library App
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .container
+      %header
+        %h1= link_to 'Books', root_path
+        %ul
+          / %li= link_to 'Bookshelves', book_bookshelves_path
+          / %li= link_to 'New Bookshelves', new_book_bookshelf_path 
+          %li= link_to 'New Book', new_book_path
+          
+      %section  
+        = yield

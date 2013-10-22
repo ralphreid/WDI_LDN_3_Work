@@ -1,0 +1,21 @@
+%ul
+  - @book.errors.full_messages.each do |error|
+    %li.errors=error
+
+= form_for(@book) do |f|
+  = f.label :title
+  = f.text_field :title
+  %br/
+  = f.label :author
+  = f.text_field :author
+  %br/
+  = f.label :pages
+  = f.number_field :pages
+  %br/
+  = f.label :year
+  = f.number_field :year
+  %br/
+  
+  = f.submit
+
+  
