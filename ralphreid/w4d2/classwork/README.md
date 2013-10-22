@@ -9,5 +9,9 @@ Session - Rails - Advanced Routes & Controllers:
 https://www.evernote.com/shard/s6/sh/69ebe127-7cd4-4e3d-9205-725ae02de6c3/4c5921e612be5370a9b5004317585dce
 
 
+Session - Rails - Authentication & Authorisation:
+https://www.evernote.com/shard/s6/sh/e50f3d1f-a228-44fa-b713-94a050c214e2/393c62e472fd9c39195dfb8f1c699eb5
 
-Session - 
+
+Session: Authorisation & Role Based content in Rails:
+https://www.evernote.com/shard/s6/sh/58bc1f95-d7ac-4685-bdab-448386e624fd/3bfaf21660c7290debe714c8c811fb30
