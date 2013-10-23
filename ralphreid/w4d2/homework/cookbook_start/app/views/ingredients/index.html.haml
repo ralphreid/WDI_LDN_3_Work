@@ -1,4 +1,5 @@
-= link_to('New Ingredient', new_ingredient_path)
+- if can? :create, Ingredient
+  = link_to('New Ingredient', new_ingredient_path)
 %ol
   - @ingredients.each do |ingredient|
     %li

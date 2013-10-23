@@ -5,6 +5,9 @@ class Ability
     user ||= User.new
     if user.role? :admin
       can :manage, :all
+    elsif user.role? :chef
+      can :read, :all
+      can :manage, Ingredient
     elsif user.role? :moderator
       can :read, :all
       can :flag, Recipe
