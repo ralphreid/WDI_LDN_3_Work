@@ -20,6 +20,8 @@ R20130214Cookbook::Application.routes.draw do
   get "/login", to: "sessions#new",         as: "login"
   delete "/logout", to: "sessions#destroy",   as: "logout"
 
+  get "/users/admin", to: "users#admin",         as: "admin"
+
   # put "/recipes/:id/flag", to: "recipes#flag", as: :flag_recipe
   # put "/recipes/flagged", to: "recipes#flagged", as: :flaged_recipes
 

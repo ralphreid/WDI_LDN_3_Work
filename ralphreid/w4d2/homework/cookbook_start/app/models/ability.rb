@@ -10,6 +10,7 @@ class Ability
       can :manage, Ingredient
     elsif user.role? :moderator
       can :read, :all
+      can :admin, User
       can :flag, Recipe
       can :flagged, Recipe
     else

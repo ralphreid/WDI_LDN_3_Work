@@ -1,0 +1,13 @@
+/ - if can? :create, Recipe
+/   = link_to('New Recipe', new_recipe_path)
+/ - if can? :flagged, Recipe
+/   \::#{link_to('Show Flagged Recipes', flagged_recipes_path)}
+
+/ - if can? :admin, Recipe
+\::#{link_to('Show Admin', admin_path)}
+
+%ol
+  - @users.each do |user|
+    %li
+      #{user.name}             #{user.role}
+      
