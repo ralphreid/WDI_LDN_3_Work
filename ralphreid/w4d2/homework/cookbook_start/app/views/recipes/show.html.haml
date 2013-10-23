@@ -6,7 +6,7 @@
 - if can? :destroy, @recipe
   \:: #{link_to('Delete Recipe', @recipe, :method => :delete, :confirm => 'Are you sure?')}
 - if can? :flag, @recipe
-  \:: #{link_to('Flag Recipe', flag_recipe_path(@recipe))}
+  \:: #{link_to('Flag Recipe', flag_recipe_path(@recipe), method: :put)}
 
 .recipe
   %h1 #{@recipe.name} by #{@recipe.user.name}
