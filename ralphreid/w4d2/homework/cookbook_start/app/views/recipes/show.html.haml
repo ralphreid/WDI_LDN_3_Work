@@ -5,6 +5,9 @@
   \:: #{link_to('Add ingredient for recipe', new_recipe_quantity_path(@recipe))}
 - if can? :destroy, @recipe
   \:: #{link_to('Delete Recipe', @recipe, :method => :delete, :confirm => 'Are you sure?')}
+- if can? :flag, @recipe
+  \:: #{link_to('Flag Recipe', flag_recipe_path(@recipe))}
+
 .recipe
   %h1 #{@recipe.name} by #{@recipe.user.name}
   = image_tag(@recipe.image, class: "recipe-image")
