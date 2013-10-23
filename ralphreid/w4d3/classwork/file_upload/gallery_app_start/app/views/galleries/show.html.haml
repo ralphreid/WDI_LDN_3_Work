@@ -3,7 +3,7 @@
   - for painting in @gallery.paintings
     .painting
       = link_to painting do
-        = image_tag painting.image
+        = image_tag painting.image.url(:thumb)
       .name= link_to painting.title, painting
       .actions
         = link_to "edit", edit_painting_path(painting)
