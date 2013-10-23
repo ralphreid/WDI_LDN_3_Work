@@ -1,5 +1,8 @@
 - if can? :create, Recipe
   = link_to('New Recipe', new_recipe_path)
+- if can? :create, Recipe
+  \::#{link_to('Show Flagged Recipes', flagged_recipes_path)}
+
 %ol
   - @recipes.each do |recipe|
     %li
