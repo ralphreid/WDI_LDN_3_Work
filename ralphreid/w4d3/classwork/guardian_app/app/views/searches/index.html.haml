@@ -1,0 +1,9 @@
+%h2 Search results
+
+%ul
+- @search.each do |search_result|
+  %li
+    -if search_result.class == Post
+      = "#{search_result.title} (post)"
+    - else
+      = "#{search_result.full_name} (author)"
