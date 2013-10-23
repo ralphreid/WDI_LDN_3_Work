@@ -12,7 +12,7 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    # @ingredient = Ingredient.create(params[:ingredient])
+    @ingredient.save
     redirect_to(@ingredient)
   end
 
