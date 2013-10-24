@@ -25,7 +25,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/new.json
   def new
     @gallery = Gallery.new
-
+    3.times { @gallery.paintings.build }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @gallery }

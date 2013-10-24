@@ -2,16 +2,18 @@
 #paintings
   - for painting in @gallery.paintings
     .painting
-      = link_to painting do
+      = link_to gallery_painting_path(@gallery, painting) do
         = image_tag painting.image_url(:thumb)# if painting.image?
-      .name= link_to painting.title, painting
+      .name= link_to painting.title, gallery_painting_path(@gallery, painting)
       .actions
-        = link_to "edit", edit_painting_path(painting)
+        = link_to "edit", edit_gallery_painting_path(@gallery, painting)
         |
-        = link_to "remove", painting, :confirm => 'Are you sure?', :method => :delete
+        = link_to "remove", gallery_painting_path(@gallery, painting), :confirm => 'Are you sure?', :method => :delete
   .clear
 %p
-  = link_to "Add a Painting", new_painting_path(:gallery_id => @gallery)
+  = link_to "Add a Painting", new_gallery_painting_path(@gallery)
+  |
+  = link_to "Edit Gallery", edit_gallery_path(@gallery)
   |
   = link_to "Remove Gallery", @gallery, :confirm => 'Are you sure?', :method => :delete
   |

@@ -12,5 +12,28 @@
   .field
     = f.label :address
     = f.text_field :address
+
+  Paintings:
+  %br
+  %br
+  = f.fields_for :paintings do |sub_form|
+    %fieldset
+      .field
+        =sub_form.label :title
+        =sub_form.text_field :title
+      .field
+        =sub_form.label :artist
+        =sub_form.text_field :artist
+      .field
+        =sub_form.label :price
+        =sub_form.text_field :price
+      .field
+        =sub_form.label :image
+        =sub_form.file_field :image
+      .field
+        =sub_form.label :remote_image_url
+        =sub_form.text_field :remote_image_url
+
+
   .actions
     = f.submit 'Save'

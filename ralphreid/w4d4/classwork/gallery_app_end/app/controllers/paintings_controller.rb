@@ -2,7 +2,8 @@ class PaintingsController < ApplicationController
   # GET /paintings
   # GET /paintings.json
   def index
-    @paintings = Painting.all
+    @gallery = Gallery.find params[:gallery_id]
+    @paintings = @gallery.paintings
 
     respond_to do |format|
       format.html # index.html.erb
