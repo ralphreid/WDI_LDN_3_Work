@@ -1,6 +1,7 @@
 R20130214Cookbook::Application.routes.draw do
 
   resources :ingredients
+  resources :searches
 
   resources :users, except: [:destroy] do
     collection do
