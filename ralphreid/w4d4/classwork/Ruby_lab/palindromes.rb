@@ -19,7 +19,6 @@ def palindrome word
   reverse = word.reverse
   word == reverse
 end
-
 def word_count string
   string = string.downcase
   words = string.split
