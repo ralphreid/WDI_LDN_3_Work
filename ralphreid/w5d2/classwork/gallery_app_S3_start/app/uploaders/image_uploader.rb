@@ -1,8 +1,11 @@
 class ImageUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::RMagick
+  include CarrierWave::MimeTypes
 
-  storage :file
+  process :set_content_type
+
+  storage :fog
   # storage :fog
 
   def store_dir
