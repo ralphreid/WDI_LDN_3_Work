@@ -20,4 +20,16 @@ class QuantitiesController < ApplicationController
     redirect_to(@recipe)
   end
 
+  def move_in_list
+    # @recipe = Recipe.find params[:recipe_id]
+    # @quantity = @recipe.quantities.find params[:id]
+    case params[:direction]
+    when 'up'
+      @quantity.move_higher
+    when 'down'
+      @quantity.move_lower
+    end
+    redirect_to @recipe
+  end
+
 end

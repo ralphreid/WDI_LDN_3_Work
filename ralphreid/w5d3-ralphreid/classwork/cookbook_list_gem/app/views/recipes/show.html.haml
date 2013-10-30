@@ -45,3 +45,9 @@
           - if can? :update, @recipe
             .field
               = link_to "delete for this recipe", recipe_quantity_path(@recipe, quantity), method: :delete
+              \|
+              = link_to 'move up', move_in_list_recipe_quantity_path(@recipe, quantity, direction: 'up'), {method: :put}
+              \|
+              = link_to 'move down', move_in_list_recipe_quantity_path(@recipe, quantity, direction: 'down'), {method: :put}
+
+

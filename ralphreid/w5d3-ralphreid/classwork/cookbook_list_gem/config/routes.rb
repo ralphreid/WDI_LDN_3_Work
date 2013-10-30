@@ -17,7 +17,11 @@ R20130214Cookbook::Application.routes.draw do
     collection do
       get :flagged
     end
-    resources :quantities, only: [:new, :destroy, :create]
+    resources :quantities, only: [:new, :destroy, :create] do
+      member do
+        put 'move/:direction', to: 'quantities#move_in_list', as: 'move_in_list'
+      end
+    end
   end
 
   root to:  "recipes#index"
