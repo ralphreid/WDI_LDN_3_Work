@@ -1,0 +1,467 @@
+Connecting to database specified by database.yml
+  [1m[36m (0.5ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateCategories (20130713085834)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130713085834')[0m
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateComments (20130713085926)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comment" varchar(255), "post_id" integer, "published_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_comments_on_post_id" ON "comments" ("post_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130713085926')
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePosts (20130713090024)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "category_id" integer, "published_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_posts_on_category_id" ON "posts" ("category_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130713090024')[0m
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateGuests (20130713090055)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "guests" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "comment_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_guests_on_comment_id" ON "guests" ("comment_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130713090055')
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTags (20130713090124)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "post_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_tags_on_post_id" ON "tags" ("post_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130713090124')[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (0.7ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (1.7ms)[0m  DELETE FROM "categories"
+  [1m[36mSQL (27.4ms)[0m  [1mDELETE FROM "posts"[0m
+  [1m[35mSQL (2.2ms)[0m  DELETE FROM "tags"
+  [1m[36mSQL (2.6ms)[0m  [1mDELETE FROM "guests"[0m
+  [1m[35mSQL (2.4ms)[0m  DELETE FROM "comments"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (8.6ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "personal"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "work"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "family"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "fun"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "ruby"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "rails"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "programming"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "fun"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "sql"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "orm"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "javascript"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "bbq"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "movie"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "posts" ("category_id", "created_at", "name", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["category_id", 2], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "new year resolutions"], ["published_at", Wed, 16 Oct 2013 11:29:43 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "posts" ("category_id", "created_at", "name", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["category_id", 1], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "january weather"], ["published_at", Wed, 23 Oct 2013 10:35:28 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "posts" ("category_id", "created_at", "name", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["category_id", 2], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "movie reviews"], ["published_at", Tue, 15 Oct 2013 22:34:42 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (2.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "posts" ("category_id", "created_at", "name", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["category_id", 4], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "easter overload"], ["published_at", Tue, 29 Oct 2013 02:10:52 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("category_id", "created_at", "name", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["category_id", 4], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "spring sunburn"], ["published_at", Mon, 28 Oct 2013 16:57:42 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  UPDATE "tags" SET "post_id" = 1, "updated_at" = '2013-10-29 09:14:08.690473' WHERE "tags"."id" = 6
+  [1m[36m (0.3ms)[0m  [1mUPDATE "tags" SET "post_id" = 1, "updated_at" = '2013-10-29 09:14:08.692273' WHERE "tags"."id" = 3[0m
+  [1m[35m (0.1ms)[0m  UPDATE "tags" SET "post_id" = 1, "updated_at" = '2013-10-29 09:14:08.693250' WHERE "tags"."id" = 4
+  [1m[36m (0.1ms)[0m  [1mUPDATE "tags" SET "post_id" = 1, "updated_at" = '2013-10-29 09:14:08.693794' WHERE "tags"."id" = 7[0m
+  [1m[35m (0.1ms)[0m  UPDATE "tags" SET "post_id" = 1, "updated_at" = '2013-10-29 09:14:08.694321' WHERE "tags"."id" = 8
+  [1m[36m (0.1ms)[0m  [1mUPDATE "tags" SET "post_id" = 1, "updated_at" = '2013-10-29 09:14:08.694980' WHERE "tags"."id" = 5[0m
+  [1m[35m (0.1ms)[0m  UPDATE "tags" SET "post_id" = 1, "updated_at" = '2013-10-29 09:14:08.695674' WHERE "tags"."id" = 1
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "tags" SET "post_id" = 3, "updated_at" = '2013-10-29 09:14:08.698210' WHERE "tags"."id" = 9[0m
+  [1m[35m (0.2ms)[0m  UPDATE "tags" SET "post_id" = 3, "updated_at" = '2013-10-29 09:14:08.699036' WHERE "tags"."id" = 5
+  [1m[36m (0.6ms)[0m  [1mUPDATE "tags" SET "post_id" = 3, "updated_at" = '2013-10-29 09:14:08.700085' WHERE "tags"."id" = 4[0m
+  [1m[35m (0.2ms)[0m  UPDATE "tags" SET "post_id" = 3, "updated_at" = '2013-10-29 09:14:08.701618' WHERE "tags"."id" = 8
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mUPDATE "tags" SET "post_id" = 4, "updated_at" = '2013-10-29 09:14:08.710792' WHERE "tags"."id" = 7[0m
+  [1m[35m (0.3ms)[0m  UPDATE "tags" SET "post_id" = 4, "updated_at" = '2013-10-29 09:14:08.712138' WHERE "tags"."id" = 5
+  [1m[36m (0.1ms)[0m  [1mUPDATE "tags" SET "post_id" = 4, "updated_at" = '2013-10-29 09:14:08.713223' WHERE "tags"."id" = 8[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 1"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 5], ["published_at", Tue, 29 Oct 2013 00:00:39 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 2"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 4], ["published_at", Tue, 29 Oct 2013 07:34:45 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 3"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 2], ["published_at", Fri, 25 Oct 2013 16:23:14 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 4"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 3], ["published_at", Sun, 27 Oct 2013 09:48:06 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 5"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 2], ["published_at", Tue, 29 Oct 2013 02:23:35 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 6"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 5], ["published_at", Tue, 29 Oct 2013 04:00:01 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 7"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 2], ["published_at", Sat, 26 Oct 2013 09:48:47 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 8"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 4], ["published_at", Tue, 29 Oct 2013 08:18:07 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 9"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 2], ["published_at", Wed, 23 Oct 2013 13:44:40 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 10"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 1], ["published_at", Sat, 26 Oct 2013 01:06:39 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 11"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 2], ["published_at", Mon, 28 Oct 2013 15:40:03 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 12"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 1], ["published_at", Mon, 21 Oct 2013 22:25:15 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 13"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 5], ["published_at", Tue, 29 Oct 2013 07:06:39 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 14"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 3], ["published_at", Thu, 17 Oct 2013 10:48:10 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 15"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 3], ["published_at", Tue, 29 Oct 2013 06:35:32 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 16"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 1], ["published_at", Sun, 20 Oct 2013 15:42:47 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 17"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 4], ["published_at", Tue, 29 Oct 2013 08:59:31 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 18"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 5], ["published_at", Mon, 28 Oct 2013 21:00:58 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 19"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 5], ["published_at", Mon, 28 Oct 2013 19:41:39 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 20"], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["post_id", 1], ["published_at", Thu, 24 Oct 2013 15:18:19 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 1], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "jon"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 2], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "julien"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 3], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "gerry"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 4], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "gerry"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 5], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "david"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 6], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "david"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 7], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "sharif"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 8], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "david"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 9], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "gerry"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 10], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "gerry"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 11], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "julien"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 12], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "neha"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 13], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "jamie"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 14], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "jamie"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 15], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "julien"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 16], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "sharif"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 17], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "jon"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 18], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "rob"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 19], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "rob"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 20], ["created_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00], ["name", "david"], ["updated_at", Tue, 29 Oct 2013 09:14:08 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (1.7ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  DROP TABLE "categories"
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  DROP TABLE "comments"
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comment" varchar(255), "post_id" integer, "published_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE INDEX "index_comments_on_post_id" ON "comments" ("post_id")
+  [1m[36m (1.4ms)[0m  [1mDROP TABLE "guests"[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "guests" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "comment_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mCREATE INDEX "index_guests_on_comment_id" ON "guests" ("comment_id")[0m
+  [1m[35m (1.0ms)[0m  DROP TABLE "posts"
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "category_id" integer, "published_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE INDEX "index_posts_on_category_id" ON "posts" ("category_id")
+  [1m[36m (1.1ms)[0m  [1mDROP TABLE "tags"[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "post_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE INDEX "index_tags_on_post_id" ON "tags" ("post_id")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM "categories"
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "posts"[0m
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM "tags"
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "guests"[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "comments"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (6.3ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "personal"], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "work"], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "family"], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "fun"], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "ruby"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "rails"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "programming"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "fun"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "sql"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "orm"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "javascript"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "bbq"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "tags" ("created_at", "name", "post_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "movie"], ["post_id", nil], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "posts" ("category_id", "created_at", "name", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["category_id", 3], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "new year resolutions"], ["published_at", Sun, 27 Oct 2013 12:36:26 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("category_id", "created_at", "name", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["category_id", 3], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "january weather"], ["published_at", Mon, 28 Oct 2013 03:57:15 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posts" ("category_id", "created_at", "name", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["category_id", 2], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "movie reviews"], ["published_at", Sat, 19 Oct 2013 06:48:42 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "posts" ("category_id", "created_at", "name", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["category_id", 4], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "easter overload"], ["published_at", Thu, 17 Oct 2013 05:38:59 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posts" ("category_id", "created_at", "name", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["category_id", 4], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "spring sunburn"], ["published_at", Thu, 17 Oct 2013 11:29:10 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  UPDATE "tags" SET "post_id" = 1, "updated_at" = '2013-10-29 11:20:45.876558' WHERE "tags"."id" = 7
+  [1m[36m (0.5ms)[0m  [1mUPDATE "tags" SET "post_id" = 1, "updated_at" = '2013-10-29 11:20:45.879143' WHERE "tags"."id" = 6[0m
+  [1m[35m (0.1ms)[0m  UPDATE "tags" SET "post_id" = 1, "updated_at" = '2013-10-29 11:20:45.880710' WHERE "tags"."id" = 8
+  [1m[36m (0.1ms)[0m  [1mUPDATE "tags" SET "post_id" = 1, "updated_at" = '2013-10-29 11:20:45.881967' WHERE "tags"."id" = 5[0m
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "tags" SET "post_id" = 2, "updated_at" = '2013-10-29 11:20:45.884090' WHERE "tags"."id" = 7
+  [1m[36m (0.4ms)[0m  [1mUPDATE "tags" SET "post_id" = 2, "updated_at" = '2013-10-29 11:20:45.885375' WHERE "tags"."id" = 2[0m
+  [1m[35m (0.1ms)[0m  UPDATE "tags" SET "post_id" = 2, "updated_at" = '2013-10-29 11:20:45.886724' WHERE "tags"."id" = 1
+  [1m[36m (0.1ms)[0m  [1mUPDATE "tags" SET "post_id" = 2, "updated_at" = '2013-10-29 11:20:45.887524' WHERE "tags"."id" = 5[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  UPDATE "tags" SET "post_id" = 3, "updated_at" = '2013-10-29 11:20:45.890319' WHERE "tags"."id" = 4
+  [1m[36m (0.4ms)[0m  [1mUPDATE "tags" SET "post_id" = 3, "updated_at" = '2013-10-29 11:20:45.891580' WHERE "tags"."id" = 1[0m
+  [1m[35m (0.1ms)[0m  UPDATE "tags" SET "post_id" = 3, "updated_at" = '2013-10-29 11:20:45.892764' WHERE "tags"."id" = 9
+  [1m[36m (0.1ms)[0m  [1mUPDATE "tags" SET "post_id" = 3, "updated_at" = '2013-10-29 11:20:45.893772' WHERE "tags"."id" = 6[0m
+  [1m[35m (0.2ms)[0m  UPDATE "tags" SET "post_id" = 3, "updated_at" = '2013-10-29 11:20:45.894694' WHERE "tags"."id" = 8
+  [1m[36m (0.1ms)[0m  [1mUPDATE "tags" SET "post_id" = 3, "updated_at" = '2013-10-29 11:20:45.896054' WHERE "tags"."id" = 3[0m
+  [1m[35m (0.1ms)[0m  UPDATE "tags" SET "post_id" = 3, "updated_at" = '2013-10-29 11:20:45.897030' WHERE "tags"."id" = 7
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mUPDATE "tags" SET "post_id" = 4, "updated_at" = '2013-10-29 11:20:45.899175' WHERE "tags"."id" = 7[0m
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "tags" SET "post_id" = 5, "updated_at" = '2013-10-29 11:20:45.901803' WHERE "tags"."id" = 6
+  [1m[36m (0.3ms)[0m  [1mUPDATE "tags" SET "post_id" = 5, "updated_at" = '2013-10-29 11:20:45.902803' WHERE "tags"."id" = 8[0m
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 1"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 5], ["published_at", Mon, 21 Oct 2013 22:38:52 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 2"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 1], ["published_at", Mon, 28 Oct 2013 22:54:25 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 3"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 3], ["published_at", Mon, 28 Oct 2013 14:46:04 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 4"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 4], ["published_at", Sun, 27 Oct 2013 22:44:10 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 5"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 4], ["published_at", Fri, 25 Oct 2013 16:16:53 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 6"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 1], ["published_at", Mon, 28 Oct 2013 06:47:39 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 7"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 3], ["published_at", Sun, 27 Oct 2013 03:34:56 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 8"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 5], ["published_at", Sun, 20 Oct 2013 02:06:47 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 9"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 4], ["published_at", Sun, 20 Oct 2013 04:39:16 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 10"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 3], ["published_at", Fri, 25 Oct 2013 21:06:17 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 11"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 5], ["published_at", Fri, 18 Oct 2013 16:19:30 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 12"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 3], ["published_at", Tue, 22 Oct 2013 23:07:06 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 13"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 3], ["published_at", Sun, 20 Oct 2013 02:14:31 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 14"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 2], ["published_at", Tue, 29 Oct 2013 00:00:15 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 15"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 5], ["published_at", Tue, 29 Oct 2013 03:23:23 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 16"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 1], ["published_at", Sun, 27 Oct 2013 14:45:02 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 17"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 4], ["published_at", Tue, 22 Oct 2013 11:56:46 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 18"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 2], ["published_at", Mon, 28 Oct 2013 06:59:30 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "comment 19"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 3], ["published_at", Sun, 27 Oct 2013 17:37:08 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "comments" ("comment", "created_at", "post_id", "published_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "comment 20"], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["post_id", 3], ["published_at", Fri, 25 Oct 2013 05:35:42 UTC +00:00], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 1], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "sharif"], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 2], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "jamie"], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 3], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "neha"], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 4], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "gerry"], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 5], ["created_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00], ["name", "sharif"], ["updated_at", Tue, 29 Oct 2013 11:20:45 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 6], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "sharif"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 7], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "jamie"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 8], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "sharif"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 9], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "sharif"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 10], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "jamie"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 11], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "sharif"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 12], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "jon"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 13], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "jamie"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 14], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "julien"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 15], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "sharif"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 16], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "julien"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 17], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "jamie"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 18], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "sharif"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["comment_id", 19], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "jon"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "guests" ("comment_id", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_id", 20], ["created_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00], ["name", "jamie"], ["updated_at", Tue, 29 Oct 2013 11:20:46 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Connecting to database specified by database.yml
