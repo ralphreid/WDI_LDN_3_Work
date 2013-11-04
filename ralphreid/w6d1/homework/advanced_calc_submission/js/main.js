@@ -43,10 +43,62 @@ function basicCalc() {
 
 }
 
-function tripCalc() {}
+function tripCalc() {
+  // get values from form
+  var distance = getFloat('trip-distance');
+  var mpg = getFloat('trip-mpg');
+  var costPerGallon = getFloat('trip-cost');
+  var speed = getFloat('trip-speed');
 
-function changeBmiUnits() {}
+  // perform calculation
+  var duration = distance / speed;
+  var cost = (( distance / mpg ) * costPerGallon ).toFixed(2);
+  // update the page
+  setHtml('trip-answer-alert', "duration is " + duration + " hrs\ncost is $" + cost);
+  unhide('trip-answer');
+}
 
-function bmiCalc() {}
+function changeBmiUnits() {
+  var unit = getValue('bmi-units');
+  switch(unit) {
+    case 'imperial':
+      setHtml('bmi-mass-unit', 'lbs');
+      setHtml('bmi-height-unit', 'inches');
+      break;
+    case 'metric':
+      setHtml('bmi-mass-unit', 'kg');
+      setHtml('bmi-height-unit', 'cm');
+      break;
+  }
+  
+}
 
-function mortgageCalc() {}
+function bmiCalc() {
+  // get values from form
+  var unit = getValue('bmi-units');
+  var mass = getFloat('bmi-mass');
+  var height = getFloat('bmi-height');
+
+  // perform calculation
+  var org = ( mass / Math.pow(height, 2) );
+  console.log(unit);
+  if (unit == 'imperial') {
+    var bmi = org * 703;
+  } else {
+    bmi = org;
+  }
+
+  // update the page
+  setHtml('bmi-answer-alert', "bmi is " + bmi);
+  unhide('bmi-answer');
+
+}
+
+function mortgageCalc() {
+  // get values from form
+
+  // perform calculation
+
+  // update the page
+ 
+}
