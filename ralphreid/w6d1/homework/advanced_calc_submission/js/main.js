@@ -81,7 +81,6 @@ function bmiCalc() {
 
   // perform calculation
   var org = ( mass / Math.pow(height, 2) );
-  console.log(unit);
   if (unit == 'imperial') {
     var bmi = org * 703;
   } else {
@@ -89,16 +88,22 @@ function bmiCalc() {
   }
 
   // update the page
-  setHtml('bmi-answer-alert', "bmi is " + bmi);
+  setHtml('bmi-answer-alert', "bmi is " + bmi.toFixed(2));
   unhide('bmi-answer');
 
 }
 
 function mortgageCalc() {
   // get values from form
+  var loan = getFloat('mortgage-loan');
+  var apr = getFloat('mortgage-apr');
+  var term = getFloat('mortgage-term');
 
   // perform calculation
+  var intrest_mon = ( apr /100 ) / 12;
+  var payment = loan * ( intrest_mon * Math.pow( (1 + intrest_mon), term ) / Math.pow((1 + intrest_mon ), term) - 1 );
 
   // update the page
- 
+  setHtml('mortgage-answer-alert', "payment is £ " + payment.toFixed(2));
+  unhide('mortgage-answer')
 }
