@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jquery events</title>
+  <style>
+    #mouseHover{ width: 500px; height: 500px; background-color: red }
+  </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+      $(function(){
+        $('#event_click').on('click', function(){
+          console.log('Clicked !')
+        });
+        $('#event_dblclick').on('dblclick', function(){
+          console.log('Double Clicked !')
+        });
+
+        $('#mouseHover').on("mouseover", function(){
+          console.log('over the div');
+          // e stands for event
+          $(this).on('mousemove', function(e) {
+            console.log(e.pageX, e.pageY);
+            $(this).css('opacity', (e.pageY/500));
+          }) 
+        });
+
+        $('#mouseHover').on("mouseout", function(){
+          console.log('left the element !')
+        });
+
+        $('#event_up_down').on('mousedown', function(){
+          console.log('mouse down on button')
+        });
+        $('#event_up_down').on('mouseup', function(){
+          console.log('mouse up on button')
+        });
+
+        // Window resize
+
+        $(window).on("resize", function(){
+          console.log("window w: "+ $(window).width() + " h: " + $(window).height());
+        });
+
+        $('#form_event').on('submit', function(e){
+          console.log("form submitted");
+          return false;
+        });
+
+        $('#text_event').focus();
+
+        $('#text_event').on('blur', function(){
+          console.log('left the input')
+        });
+
+        $('#select_event').on('change', function(){
+          console.log('changed select tag')
+        })
+
+        $('#radio_event').on('change', function(){
+          console.log('changed radio tag')
+        })
+
+        // KEYBOARD EVENTS
+        $('#text_event').on('keydown', function(){
+          console.log('pressed a key')
+        });
+
+        $('#text_event').on('keyup', function(){
+          console.log('released a key')
+        });
+
+        $('#text_event').on('keypress', function(e){
+          console.log('released a key' + e.which)
+        });
+
+      });
+    </script>
+
+</head>
+<body>
+  <button id='event_click'>Click</button>
+  <button id='event_dblclick'>Double Click</button>
+  <hr />
+  <div id='mouseHover'></div>
+  <hr />
+  <button id='event_up_down'>UP/DOWN</button>
+  <form id="form_event">
+    <select id="select_event">
+      <option>---</option>
+      <option value="wdi">wdi</option>
+    </select>
+    <input type="radio" id="radio_event">
+    <input id="text_event">
+    <input type="submit">
+  </form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Advanced Calc</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/bootstrap-theme.css">
@@ -40,7 +41,7 @@
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-2">
-              <button id="basic-calc" class="btn btn-default" type="button" onclick="basicCalc()">Calculate</button>
+              <button id="basic-calc" class="btn btn-default" type="button" >Calculate</button>
             </div>
           </div>
           <div id="basic-answer" class="hide">
@@ -79,7 +80,7 @@
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-2">
-              <button id="trip-calc" class="btn btn-default" type="button" onclick="tripCalc()">Calculate</button>
+              <button id="trip-calc" class="btn btn-default" type="button">Calculate</button>
             </div>
           </div>
           <div id="trip-answer" class="hide">
@@ -95,7 +96,7 @@
           <div class="form-group">
             <label for="bmi-units" class="col-sm-2 control-label">Units:</label>
             <div class="col-sm-2">
-              <select class="form-control" id="bmi-units" onchange="changeBmiUnits()">
+              <select class="form-control" id="bmi-units">
                 <option value="metric">metric</option>
                 <option value="imperial">imperial</option>
               </select>
@@ -115,7 +116,7 @@
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-2">
-              <button id="bmi-calc" class="btn btn-default" type="button" onclick="bmiCalc()">Calculate</button>
+              <button id="bmi-calc" class="btn btn-default" type="button">Calculate</button>
             </div>
           </div>
           <div id="bmi-answer" class="hide">
@@ -148,7 +149,7 @@
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-2">
-              <button id="mortgage-calc" class="btn btn-default" type="button" onclick="mortgageCalc()">Calculate</button>
+              <button id="mortgage-calc" class="btn btn-default" type="button">Calculate</button>
             </div>
           </div>
           <div id="mortgage-answer" class="hide">
