@@ -1,4 +1,15 @@
-# W6D1 Homework: Calc-It extended (JavaScript)
+
+For DAVID:
+
+I had diffculty getting refactored js functions to work in jquery.
+So I hacked thorugh the work and added the methods directly to each calculation. this is not Dry and would appreciate help drying it out. Thanks.
+
+
+
+
+
+
+#EXTEND in jQuery W6D1 Homework: Calc-It extended (JavaScript)
 
 Continue working on the JavaScript Advanced Calculator we started building in class. Add the following features...
 
