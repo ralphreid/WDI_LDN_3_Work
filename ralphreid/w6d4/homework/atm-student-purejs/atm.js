@@ -3,28 +3,28 @@ var savingsBalance = 0;
 
 window.onload = function() {
 
-  document.getElementById('checking-deposit').onclick = function getChecking(event) {
-    var amount = document.getElementById('checking-amount').value;
-    amount = parseInt(amount);
-    checkingBalance = amount + checkingBalance;
-    updateDisplay();
-  };
+  // document.getElementById('checking-deposit').onclick = function getChecking(event) {
+  //   var amount = document.getElementById('checking-amount').value;
+  //   amount = parseInt(amount);
+  //   checkingBalance = amount + checkingBalance;
+  //   updateDisplay();
+  // };
 
-  document.getElementById('savings-deposit').onclick = function(event) {
+  // document.getElementById('savings-deposit').onclick = function(event) {
     var amount = document.getElementById('savings-amount').value;
     amount = parseInt(amount);
     savingsBalance = amount + savingsBalance;
     updateDisplay();
-  };
+  // };
 
-  document.getElementById('checking-withdraw').onclick = function(event) {
+  // document.getElementById('checking-withdraw').onclick = function(event) {
     var amount = document.getElementById('checking-amount').value;
     amount = parseInt(amount);
     balances = withdrawFunds(amount, checkingBalance, savingsBalance);
     checkingBalance = balances[0];
     savingsBalance = balances[1];
     updateDisplay();
-  };
+  // };
 
   document.getElementById('savings-withdraw').onclick = function(event) {
     var amount = document.getElementById('savings-amount').value;
@@ -49,7 +49,7 @@ function withdrawFunds(amount, primary, secondary) {
   return [primary, secondary];
 }
 
-function updateDisplay() {
+// function updateDisplay() {
 
   var element = document.getElementById('checking-balance');
 

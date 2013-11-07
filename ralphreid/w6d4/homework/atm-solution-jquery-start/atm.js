@@ -20,9 +20,14 @@ $(function(){
     updateDisplay();
   });
 
-  function withdrawFunds(){
-
-  }
+  $('#checking-withdraw').on('click', function(){
+    var amount = $('#checking-amount').val();
+    amount = parseInt(amount);
+    balances = withdrawFunds(amount, checkingBalance, savingsBalance);
+    checkingBalance = balances[0];
+    savingsBalance = balances[1];
+    updateDisplay();
+  });
 
   function updateDisplay(){
     var element = $('#checking-balance');
@@ -32,13 +37,16 @@ $(function(){
       element.removeClass('zero');
     };
 
-    var element2 = $('savings-balance');
+    var element2 = $('#savings-balance');
     if (savingsBalance <= 0){
       element2.addClass('zero');
     } else {
       element2.removeClass('zero');
     };
-
+    $('#checking-balance').text('$' + checkingBalance);
+    $('#savings-balance').text('$' + savingsBalance);
+    $('#checking-amount').text('');
+    $('#savings-amount').text('');
   }
 
 
