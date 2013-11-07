@@ -4,15 +4,11 @@ $(function(){
   var checkingBalance = 0;
   var savingsBalance = 0;
 
-  $checkingDeposit = $('#checking-deposit');
-
-  $checkingDeposit.on('click', getChecking);
-
-  function getChecking(){
+  $('#checking-deposit').on('click', function() {
     var amount = parseInt($('#checking-amount').val());
     checkingBalance = amount + checkingBalance;
     updateDisplay();
-  }
+  });
 
   $('#savings-deposit').on('click', function(){
     var amount = parseInt($('savings-amount').val());
@@ -29,7 +25,28 @@ $(function(){
     updateDisplay();
   });
 
-  function updateDisplay(){
+  $('#savings-withdraw').on('click', function(){
+    var amount = $('#savings-amount').val();
+    amount = parseInt(amount);
+    balances = withdrawFunds(amount, checkingBalance, savingsBalance);
+    savingsBalance = balances[0];
+    checkingBalance = balances[1];
+    updateDisplay();
+  });
+
+  updateDisplay();
+
+function withdrawFunds(amount, primary, secondary) {
+  if (amount <= primary) {
+    primary = primary - amount;
+  } else if ((amount > primary) && (amount <= (secondary + primary))) {
+    secondary = (primary + secondary) - amount;
+    primary = 0;
+  }
+  return [primary, secondary];
+}
+
+function updateDisplay(){
     var element = $('#checking-balance');
     if (checkingBalance <= 0) {
       element.addClass('zero');
@@ -49,5 +66,5 @@ $(function(){
     $('#savings-amount').text('');
   }
 
+});
 
-})
