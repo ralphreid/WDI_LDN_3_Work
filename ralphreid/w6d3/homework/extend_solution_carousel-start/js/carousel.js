@@ -15,6 +15,7 @@ function Carousel(sel, h, w, options) {
 		self.imageWidth = w;
 
 		self.transitionDuration = options.transitionDuration || 200;
+		self.loop = options.loop || true;
 
 		self.$carousel = $(self.sel);
 		self.$carousel
@@ -43,6 +44,8 @@ function Carousel(sel, h, w, options) {
 		self.imgIndex = 0;
 		self.lastImgIndex = self.$images.length - 1;
 
+		
+
 	}
 
 	// slide the slider left by one image width
@@ -61,6 +64,7 @@ function Carousel(sel, h, w, options) {
 
 	// trigger a smooth animation
 	self.animateTransition = function(direction) {
+		console.log('index is ' + self.imgIndex);
 		var currLeft = parseInt(self.$slider.css('left'));
 		var nextLeft = currLeft + self.imageWidth * direction;
 		self.$slider.animate(
@@ -68,6 +72,33 @@ function Carousel(sel, h, w, options) {
 			self.transitionDuration
 		);
 		self.imgIndex -= direction;
+
+		switch (self.loop) {
+			case false:
+				console.log('loop is set to FALSE');
+				
+				if (self.imgIndex == 0) {
+					self.$carousel.children('.carousel-direction.next').show();
+					self.$carousel.children('.carousel-direction.previous').hide();
+				}
+				else if (self.imgIndex == 1) {
+					self.$carousel.children('.carousel-direction.previous').show();
+				}
+				else if (self.imgIndex == (self.lastImgIndex -1)) {
+					self.$carousel.children('.carousel-direction.next').hide();
+				}
+				
+				break;
+			case true:
+				console.log('loop is set to TRUE');
+				if (self.imgIndex == 1) {
+					self.$slider.css('left', 0);
+				}
+
+				break;
+		}
+		
+
 	}
 
 	initialize(sel, h, w, options || {});
