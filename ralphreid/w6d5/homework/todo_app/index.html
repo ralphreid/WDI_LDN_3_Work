@@ -1,0 +1,41 @@
+<html>
+<head>
+ 
+  <script src="./scripts/jquery-2.0.3.js"></script>
+  <script src="./scripts/underscore.js"></script>
+  <script src="./scripts/script.js"></script>
+ 
+  <title>ToDo App</title>
+
+  <script type="text/javascript">
+    
+    
+  </script>
+ 
+  <script type="text/html" id="application">
+    <table>
+      <% _.each(tasks, function(task){ %>
+        <tr>
+          <td><%= task.desc %></td>
+          <td><%= task.stat %></td>
+        </tr>
+      <% }); %>
+    </table>
+  </script>
+ 
+</head>
+<body>
+  <div id="nav">
+    <ul>
+      <li>New</li>
+      <li>All</li>
+      <li>ToDo</li>
+      <li>Completed</li>
+    </ul>
+  </div>
+  <div id='list'>
+      List goes here
+
+  </div>
+</body>
+</html>
