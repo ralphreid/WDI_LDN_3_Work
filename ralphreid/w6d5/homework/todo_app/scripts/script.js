@@ -17,5 +17,5 @@ $(function(){
   var application = $("#application").html();
   $('#list').html(_.template(application, {tasks: tasks}));
  
-  
+// $
 })
