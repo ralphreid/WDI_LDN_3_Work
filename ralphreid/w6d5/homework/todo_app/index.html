@@ -22,6 +22,15 @@
       <% }); %>
     </table>
   </script>
+
+  <script type="text/html" id="newTask">
+    <table>
+      <tr>
+        <td><input id="newTaskEntry" type="text" placeholder="enter a new task" /></td>
+        <td><input id="add-task" type="button" value='Add'/></td>
+      </tr>
+    </table>
+  </script>
  
 </head>
 <body>
@@ -33,9 +42,7 @@
       <li><button id='completed'>Completed</button></li>
     </ul>
   </div>
-  <div id='list'>
-      List goes here
-
-  </div>
+  <div id='list'></div>
+  <div id='newEntry'></div>
 </body>
 </html>

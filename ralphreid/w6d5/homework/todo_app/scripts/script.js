@@ -9,7 +9,7 @@ $(function(){
   ];
 
 
-  renderApplication(tasks);
+  
 
   // onclick button actions
   $('#all').click(function(){
@@ -17,7 +17,7 @@ $(function(){
   });
 
   $('#new').click(function(){
-    console.log('new button clicked')
+    renderNewTask()
   });
 
   $('#todo').click(function(){
@@ -30,20 +30,32 @@ $(function(){
     renderApplication(completed);
   });
 
-   
- 
-  // fiter list based ons status flag
-
-  // render new task template
-
-  // capture new task
 
   // add new task to the list
+  function addTask(){
+    $('#add-task').click(function(){
+      var taskAdd = $('#newTaskEntry').val();
+      tasks.push({desc: taskAdd, stat: '1'})
+    });
+  };
 
   // render to page
   function renderApplication(tasks){
     var application = $("#application").html();
     $('#list').html(_.template(application, {tasks: tasks}));
+    $('#newEntry').hide();
   };
+
+  // render new task template
+  function renderNewTask() {
+    var newTask = $('#newTask').html();
+    $('#newEntry').show();
+    $('#newEntry').html(newTask);
+    addTask();
+  };
+
+
+
+
  
 })
