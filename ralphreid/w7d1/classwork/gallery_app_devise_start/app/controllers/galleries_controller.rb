@@ -1,5 +1,6 @@
 class GalleriesController < ApplicationController
 
+  before_filter :authenticate_user!, except: [:show, :index]
   before_filter :fetch_gallery, only: [:show, :edit, :update, :destroy]
 
   # GET /galleries

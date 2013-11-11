@@ -1,5 +1,6 @@
 class PaintingsController < ApplicationController
 
+  before_filter :authenticate_user!, except: [:show, :index]
   before_filter :fetch_gallery
   before_filter :fetch_painting, only: [:show, :edit, :update, :destroy]
 
