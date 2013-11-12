@@ -20,10 +20,10 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     # binding.pry #see whats in side
-      if user = User.find_by_email(auth.info.email)
-        user.provider = auth.provider
-        user.uid = auth.uid
-        user
+    if user = User.find_by_email(auth.info.email)  # auth[:info][:email] because hashymash is used
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user
     else
       where(auth.slice(:provider, :uid)).first_or_create do |user|
         user.provider = auth.provider
