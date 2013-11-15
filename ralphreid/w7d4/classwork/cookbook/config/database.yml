@@ -4,3 +4,10 @@ development:
   database: cookbook_development
   pool: 5
   host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: cookbook_test
+  pool: 5
+  host: localhost
