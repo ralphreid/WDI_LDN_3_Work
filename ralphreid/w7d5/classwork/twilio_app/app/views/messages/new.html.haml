@@ -1,0 +1,7 @@
+%h1 Send A TEXT TO YOURSELF !!!
+
+= form_tag messages_path, method: :post do
+  = label_tag :content
+  = text_field_tag :content
+  = submit_tag
+
