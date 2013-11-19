@@ -10,6 +10,9 @@ gem 'pg'
 gem 'sinatra', '>=1.3.0', :require => nil
 gem 'sidekiq'
 gem 'sidekiq-failures'
+gem 'devise'
+gem 'open_calais'
+gem 'acts-as-taggable-on'
 
 # Gems used only for assets and not required
 # in production environments by default.

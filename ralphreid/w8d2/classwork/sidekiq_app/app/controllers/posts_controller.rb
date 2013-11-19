@@ -44,6 +44,11 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+
+        # DemoWorker.perform_async 10, "just finished some slow processing triggered by posts controller create action"
+
+        AutoTagWorker.perform_async @post.id
+
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
@@ -60,6 +65,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
+        
+        AutoTagWorker.perform_async @post.id
+
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else

@@ -1,7 +1,13 @@
 SidekiqApp::Application.routes.draw do
+  devise_for :users
+
   resources :posts
 
-  root to: 'post#index'
+  root to: 'posts#index'
+  
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
