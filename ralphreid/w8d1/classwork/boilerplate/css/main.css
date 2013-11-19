@@ -1,0 +1,81 @@
+/*******
+* BODY *
+*******/
+
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+ }
+
+body {
+  background: orange;
+  font: 100%/1.4 sans-serif;
+}
+
+a {
+  color: white;
+}
+
+a:hover,
+a:focus {
+  color: green;
+  background: purple;
+}
+
+/*******
+* Layout *
+*******/
+
+.container {
+  margin: 0 auto;
+  background: blue;
+  max-width: 1000px;
+  min-width: 600px;
+}
+
+.navbar {
+  background: green;
+  float: left;
+  padding: 0.625rem;
+  /*padding: 10px;*/
+  width: 31.914893617%;
+  font-size: 0.75em;
+}
+
+.content {
+  background: white;
+  float: right;
+  padding: 0.625em;
+  /*padding: 10px;*/
+  width: 68.085106383%;
+}
+
+/*******
+* utilities *
+*******/
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.em {
+  width: 1em;
+  height: 1em;
+  background: blue;
+}
+
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: purple;
+  }
+
+}
