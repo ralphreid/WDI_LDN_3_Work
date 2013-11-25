@@ -1,0 +1,54 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+  <script type="text/x-handlebars" data-template-name="application">
+    <h1>Cars Application</h1>
+ 
+    {{#linkTo "cars.index"}}Cars{{/linkTo}}
+    {{#linkTo "cars.new"}}Create a new Car{{/linkTo}}
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="cars/index">
+    <h2>Cars</h2>
+    {{controller}}
+    {{controller.content}}
+    <ul>
+      {{#each controller}}
+        <li>{{modelName}} ({{brand.name}})</li>
+      {{/each}}
+    </ul>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="cars/new">
+    <h2>Create new Car</h2>
+    {{controller}}
+    <form {{action "createCar" on="submit"}}>
+      {{view Ember.TextField valueBinding="modelName"}}
+      {{view Ember.Select valueBinding="select_brand"
+        contentBinding="brands"
+        optionLabelPath="content.name"
+        optionValuePath="content.id"
+        prompt="pick a brand"
+      }}
+      
+      <button>Create</button>
+    <form>
+  </script>
+
+  <script src="./libs/jquery-1.9.1.js"></script>
+  <script src="./libs/handlebars-1.0.0-rc.4.js"></script>
+  <script src="./libs/ember-1.0.0-rc.6.1.js"></script>
+  <script src="./libs/ember-data-0.13.js"></script>
+  
+  <script src="./js/application.js"></script>
+  <script src="./js/router.js"></script>
+  <script src="./js/models/car.js"></script>
+  <script src="./js/models/brand.js"></script>
+  <script src="./js/controllers/cars_new_controller.js"></script>
+  
+</body>
+</html>
