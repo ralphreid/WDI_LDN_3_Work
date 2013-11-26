@@ -1,5 +1,13 @@
 <h1>{{ title }}</h1>
-<h2>by {{ author.name }} <small class="muted">({{ format-date date }})</small></h2>
+<h2>by {{ author.name }}
+  <small class="muted">
+    (created {{ format-date date }})
+    {{!-- {{#if isFresh }} --}}
+      {{ isFresh }}
+      (updated at {{ modified }})
+    {{!-- {{/if}} --}}
+  </small>
+</h2>
 
 <hr>
 
