@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <title>Rastamon's Blog</title>
+</head>
+<body>
+  
+  
+  <script type="text/x-handlebars" data-template-name="application">
+    
+    <h1>Rasta Blog</h1>
+    <h2>Welcome to RastaMon Blog</h2>
+
+    {{#linkTo "posts"}}Posts{{/linkTo}}
+    {{#linkTo "posts.new"}}New{{/linkTo}}
+
+    {{outlet}}
+
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="posts">
+    <h2>Posts</h2>
+    {{controller}}
+    {{controller.content}}
+    <ul>
+     {{#each controller}}
+       <li>
+        {{title}} ({{category.name}})
+       </li>
+     {{/each}}
+    </ul>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="posts/new">
+    <h2>Create new Post</h2>
+    {{controller}}
+    <form {{action "createPost" on="submit"}}>
+      {{view Ember.TextField valueBinding="title"}}
+      {{view Ember.Select valueBinding="select_category"
+        contentBinding="categories"
+        optionLabelPath="content.name"
+        optionValuePath="content.id"
+        prompt="pick a category"
+      }}
+
+  </script>
+
+  <script src="./libs/jquery-1.9.1.js"></script>
+  <script src="./libs/handlebars-1.0.0-rc.4.js"></script>
+  <script src="./libs/ember-1.0.0-rc.6.1.js"></script>
+  <script src="./libs/ember-data-0.13.js"></script>
+  
+
+  <script src="./js/application.js"></script>
+  <script src="./js/router.js"></script>
+  <script src="./js/models/post.js"></script>
+  <script src="./js/models/msg.js"></script>
+  <script src="./js/models/category.js"></script>
+  <script src="./js/controllers/posts_new_controller.js"></script>
+</body>
+</html>

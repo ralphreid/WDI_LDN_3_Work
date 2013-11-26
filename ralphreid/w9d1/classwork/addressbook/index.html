@@ -1,0 +1,93 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+  <script type="text/x-handlebars" data-template-name="application">
+    <header>
+      <h1>Address Book</h1>  
+    </header>
+
+    <section>
+      {{outlet}}
+    </section>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="_new_contact">
+    First: <br />
+    {{view Ember.TextField valueBinding="first"}}<br />
+    Last: <br />
+    {{view Ember.TextField valueBinding="last"}}<br />
+    Phone: <br />
+    {{view Ember.TextField valueBinding="phone"}}<br />
+    Category: <br />
+    {{view Ember.Select valueBinding="category_id"
+              contentBinding="categories"
+              optionLabelPath="content.name"
+              optionValuePath="content.id"
+              prompt="Pick a category"}}
+
+    <button {{action "createContact"}}>Save</button>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="contacts">
+    
+    {{partial "new_contact"}}
+
+    <p>
+      {{count_contacts}} {{contact_inflection}}
+    </p>
+    <table border=1>
+      {{#each controller itemController="contact"}}
+        <tr>
+          {{#if isEditing}}
+            <td>
+              {{view Ember.Select valueBinding="category_id"
+              selectionBinding="selected_category"
+              contentBinding="categories"
+              optionLabelPath="content.name"
+              optionValuePath="content.id"
+              prompt="Pick a category"}}
+            </td>
+            <td>{{view Ember.TextField valueBinding="first"}}</td>
+            <td>{{view Ember.TextField valueBinding="last"}}</td>
+            <td>{{view Ember.TextField valueBinding="phone"}}</td>
+            <td><button {{action "saveContact"}}>Save</button></td>
+          {{else}}
+          <td>
+            <div {{action "editContact" on="doubleClick"}}>
+            {{category.name}}
+            </div>
+          </td>
+          <td>
+            <div {{action "editContact" on="doubleClick"}}>
+            {{first}}
+            </div>
+          </td>
+          <td>
+            <div {{action "editContact" on="doubleClick"}}>
+            {{last}}
+            </div>
+          </td>
+          <td>
+            <div {{action "editContact" on="doubleClick"}}>
+            {{phone}}
+            </div>
+          </td>
+          <td>
+            <button {{action "deleteContact"}}>Delete</button>
+          </td>
+          {{/if}}
+        </tr>
+      {{/each}}
+    </table>
+  </script>
+  <script src="./libs/jquery-1.9.1.js"></script>
+  <script src="./libs/handlebars-1.0.0-rc.4.js"></script>
+  <script src="./libs/ember-1.0.0-rc.6.1.js"></script>
+  <script src="./libs/ember-data-0.13.js"></script>
+  
+  <script src="./js/script.js"></script>
+</body>
+</html>
