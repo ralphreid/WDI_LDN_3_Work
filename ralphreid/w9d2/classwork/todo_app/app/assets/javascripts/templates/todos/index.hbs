@@ -1,0 +1,11 @@
+{{controller}}
+
+<ul id='todo-list'>
+  {{#each controller itemController='todo'}}
+    <li>
+      {{view TodoApp.CheckBoxStatusView checkedBinding='status'}}
+      <label>{{name}}</label>
+      <button {{action 'removeTodo'}} class='destroy'></button>
+    </li>
+  {{/each}}
+</ul>

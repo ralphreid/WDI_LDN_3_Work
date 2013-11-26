@@ -1,0 +1,16 @@
+# PostgreSQL. Versions 8.2 and up are supported.
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: rails_ember_blog_development
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: rails_ember_blog_test
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: rails_ember_blog_production
