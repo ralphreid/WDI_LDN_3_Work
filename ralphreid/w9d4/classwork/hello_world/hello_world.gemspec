@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = HelloWorld::VERSION
   spec.authors       = ["Ralph Reid"]
   spec.email         = ["beresfordjunior@me.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{This Gem can say hello in more than 100 languages}
+  spec.summary       = %q{I'm sorry I have no clue of what I should put here}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  # spec.add_dependency
 end
